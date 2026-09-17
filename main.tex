@@ -411,7 +411,7 @@ If the unreduced matrix is given the ordinary entrywise $\ell^2$ norm, the edge 
 \label{sec:elementary}
 
 The following arguments establish the operator before any spectral diagonalization is used.
-\question{We had a nice reference for Schur's test. Do you remember? Was it  Halmos and  Shankar Sunder, Bounded integral operators on $L^2$ spaces}
+
 \begin{proposition}[Weighted Schur test]
 \label{prop:norm}
 The operator $K$ is bounded, positive and self-adjoint on $L^2(\D,\dd A)$, and
@@ -419,7 +419,7 @@ The operator $K$ is bounded, positive and self-adjoint on $L^2(\D,\dd A)$, and
  \norm K=\pi.
  \label{eq:exact-norm}
 \end{equation}
-Consequently, $\norm{\Sigma^\sharp}=\sqrt\pi$.
+Consequently, $\norm{\mathcal{M}}=\sqrt\pi$.
 \end{proposition}
 
 \begin{proof}
@@ -427,7 +427,8 @@ For the non-negative symmetric kernel
 \[
  \kappa(z,w)=\frac1{\pi|1-z\overline w|^2},
 \]
-use the Schur weight $\chi(z)=(1-|z|^2)^{-1/2}$.  With $z=re^{i\theta}$ and $w=\rho e^{i\phi}$,
+we use the Schur test  in the form given, for example, in
+\cite[Section~4]{HalmosSunder1978} with  weight $\chi(z)=(1-|z|^2)^{-1/2}$.  With $z=re^{i\theta}$ and $w=\rho e^{i\phi}$,
 \[
  \int_0^{2\pi}\frac{\dd\phi}
  {1-2r\rho\cos\phi+r^2\rho^2}
@@ -783,8 +784,31 @@ The exponential multiplier should not be confused with compactness.  It is a non
 \section{A brief finite-section experiment}
 \label{sec:numerics}
 
-For illustration, we truncate hyperbolic radius to $0<x<X$, discretize each angular block by a symmetric Nystr\"om method, and order the resulting finite-dimensional singular values globally.  The truncation makes every block compact; its discrete modes should be interpreted as spectral packets sampling the continuous parameter $\mu$, not as convergent eigenvalues of the infinite operator.
-\question{I think we need to make it clearer that we use a numerical eigen system routine (eigs) on this Nystrom matrix on a truncated domain. Then we compare with the analytical results}
+For illustration, we truncate the hyperbolic radial variable to
+$0<x<X$.  For each angular frequency $|m|\leq M$, a Gauss--Legendre
+quadrature rule is used to form a symmetric Nystr\"om matrix for the
+corresponding truncated integral operator.  If $x_i$ and $w_i$ are
+the quadrature nodes and weights and $\widetilde k_m$ denotes the
+kernel in the transformed coordinate, the matrix has the form
+\[
+(A_m)_{ij}
+=
+\sqrt{w_i}\,\widetilde k_m(x_i,x_j)\sqrt{w_j}.
+\]
+The leading eigenpairs of the real symmetric matrix $A_m$ are computed
+using MATLAB's \texttt{eigs} routine.  If
+$\lambda_{m,j}^{(X,N)}$ is a computed eigenvalue, then
+\[
+\sigma_{m,j}^{(X,N)}
+=
+\sqrt{\lambda_{m,j}^{(X,N)}}
+\]
+is the corresponding singular value of the truncated measurement
+map.
+
+
+The truncation makes every block compact; its discrete modes should be interpreted as spectral packets sampling the continuous parameter $\mu$, not as convergent eigenvalues of the infinite operator.
+
 
 Figure~\ref{fig:global-order} shows the characteristic interlacing of angular frequency and radial oscillation count.  The sawtooth behaviour is expected: after ordering by attenuation, the next mode need not have either the next angular frequency or the next radial zero count.  Figure~\ref{fig:analytic-comparison} compares selected numerical profiles with \eqref{eq:radial-genfun} after the stable transformation \eqref{eq:liouville-profile}.
 
