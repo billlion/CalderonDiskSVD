@@ -103,7 +103,7 @@ block, is particularly transparent. For rotationally symmetric perturbations, a 
  (Hf)(t)=\int_0^1\frac{f(s)}{1-st}\,\dd s.
  \label{eq:radial-hilbert}
 \end{equation}
-Its continuous spectral multiplier may be obtained from an adjacent-interval finite Hilbert transform, from a commuting Sturm--Liouville expression, from Hilbert-matrix theory, or from a P\"oschl--Teller scattering problem; see, for example, \cite{KatsevichTovbis2016,AlemanMontesSarafoleanu2012,MontesVirtanen2025}. The Finite Hilbert transform approach especially gives insight in to the non-compactness.  The finite Hilbert transform is on adjacent intervals, ie sharing one endpoint.  If a gap is introduced, in our case meaning the unknown parameter is known in a neighbourhood of the boundary, then the operator is compact. Simillarly if Neumann-to Dirichlet data is considered compactness is restored. In both these cases we do not (yet) have such an explicit diagonalization. 
+Its continuous spectral multiplier may be obtained from an adjacent-interval finite Hilbert transform, from a commuting Sturm--Liouville expression, from Hilbert-matrix theory, or from a P\"oschl--Teller scattering problem; see, for example, \cite{KatsevichTovbis2016,AlemanMontesSarafoleanu2012,MontesVirtanen2025}. The Finite Hilbert transform approach especially gives insight in to the non-compactness.  The finite Hilbert transform is on adjacent intervals, ie sharing one endpoint.  If a gap is introduced, in our case meaning the unknown parameter is known in a neighbourhood of the boundary, then the operator is compact. Similarly if Neumann-to Dirichlet data is considered compactness is restored. However in both these cases we do not (yet) have such an explicit diagonalization. 
 
   The purpose of the present paper is to show that the full, non-rotationally symmetric problem is not merely a direct sum of unrelated radial calculations for different frequency modes.  The angular blocks assemble into one hyperbolically invariant operator on the disk and this gives a diagonalization of this non-compact operator. This gives a practically and theoretically satisfying  answer to an important special case of a long standing problem of importance in applications.
 
@@ -1020,9 +1020,11 @@ Several related questions remain outside the scope of the present paper.  Freque
 %\item finalize authorship, CRediT roles, data/code archive and the generative-AI disclosure.
 %\end{enumerate}
 
-\ack{This draft was developed with substantial assistance from ChatGPT (OpenAI), using GPT-5.6 Sol Pro through a ChatGPT Pro subscription, accessed in September 2026.  The assistance included proposing candidate derivations, symbolic and numerical checks, literature-search support and drafting.  The human author is responsible for checking every argument, computation, citation and originality claim.  \todo{Revise this disclosure after the final human verification record and author contributions are complete.}}
+\ack{This draft was developed with substantial assistance from ChatGPT (OpenAI), using GPT-5.6 Sol Pro through a ChatGPT Pro subscription, accessed in September 2026.  The assistance included proposing candidate derivations, symbolic and numerical checks, literature-search support and drafting. In partuclar the LLM found the connection to yperbolic geometry and wighted Bergman Berezin transform.  The human author is responsible for checking every argument, computation, citation and originality claim. 
+	% \todo{Revise this disclosure after the final human verification record and author contributions are complete.}}
 
-\roles{William R B Lionheart: conceptualization, methodology, investigation, validation, writing, and supervision.  \todo{Replace by the final CRediT statement if further authors join the paper.}}
+\roles{William R B Lionheart: conceptualization, methodology, investigation, validation, writing, and supervision. As well as the choice of problem the derivation of the kernel function of the normal operator and the multiplicity weighting was the human author's insight although the LLM was able to reproduce and extend this reasoning with minimal prompting.  
+	% \todo{Replace by the final CRediT statement if further authors join the paper.}}
 
 \data{The MATLAB code used for the exploratory finite-section figures is included with the present draft package.  A versioned public repository and a precise computational environment will be supplied with the submitted manuscript. \todo{Add repository DOI or URL and software versions.}}
 
