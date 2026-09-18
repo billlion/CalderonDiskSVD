@@ -75,7 +75,7 @@
 	We study the full angular dependence of the linearized Schr\"odinger
 	form of the Calder\'on problem on the unit disk.  We obtain an explicit
 	continuous spectral diagonalization of its normal operator and hence a
-	generalized singular system for the linearized measurement map.
+	generalized singular system for the linearized forward map.
  After removing repeated boundary Fourier measurements, the independent data are indexed by the Zernike lattice.  Their normal operator is
 \[
  (Kf)(z)=\frac1\pi\int_{\D}\frac{f(w)}{|1-z\overline w|^2}\,\dd A(w).
@@ -87,21 +87,25 @@ A weighted Schur estimate gives the exact norm $\|K\|=\pi$, and a weakly null se
 where $\mathsf L$ is the Euclidean-space realization unitarily equivalent to the hyperbolic Laplacian.  Hence $K$ has purely absolutely continuous spectrum $[0,\pi]$, and its generalized singular attenuation is exponential in hyperbolic frequency.  We give the associated Legendre and hypergeometric modes and a brief finite-section numerical check.  The classical Berezin diagonalization is not claimed as new; the main point is that this Hardy-endpoint operator arises naturally from multiplicity-normalized linearized Calder\'on measurements.
 \end{abstract}
 
-\noindent\todo{Confirm the final author list, affiliations, corresponding-author details and CRediT contributions. Done}
+
 
 \section{Introduction}
 
-Calder\'on introduced the boundary linearization that now bears his name in the conductivity setting \cite{Calderon1980}.  This is important for medical, industrial and geophysical imaging \cite{adler2015electrical}.
+Calder\'on introduced the inverse boundary problem that now bears his name in the conductivity setting \cite{Calderon1980}, including calculation of the Fr\'echet derivative and a proof of its injectivity.  This is important for medical, industrial and geophysical imaging, where it goes by various names including Electrical Impedance Tomography and Electrical Resistivity Tomography  \cite{adler2015electrical}.
 
 Numerical singular value decompositions of discretized versions of
-this problem have been considered since 
- the 1990s \cite{breckon1990image}.  The radial subproblem, corresponding to the $m=0$ angular Fourier
-block, is particularly transparent. For rotationally symmetric perturbations, a multiplicity-normalized normal operator reduces, after the change of variables $t=r^2$, to the Hilbert kernel \cite{Lionheart2026AtLast}. 
+the linearized  problem have been considered since 
+ the 1990s, eg \cite{breckon1990image}.  The problem is noted to be severely illposed with an exponential decay in singular values.  While numerical results give some insight into the severely illposed nature of the problem, and especially the insensitivity to interior perturbations in conductivity, an explicit form of these singular functions has been elusive. Inspired by the explicit singular value decomposition of the Radon on transform on the disk that was already well known in the 1980s, the author, as a naive doctoral student, assumed that it would be fairly straightforward to find such an explicit decomposition for the Calder\'on problem. The realization by the author that normal operator is {\em not} compact (see Prop \ref{prop:noncompact}), in around 2023, offered some explanation for decades of lack of progress, but also gave  a path to  the extensive body of literature on spectral theory of related operators
+ 
+  The radial subproblem, ie rotationally invariant unknown, corresponding to the $m=0$ angular Fourier
+block, is particularly transparent. For rotationally symmetric perturbations, a multiplicity-normalized normal operator reduces to the Hilbert kernel \cite{Lionheart2026AtLast}. 
 \begin{equation}
  (Hf)(t)=\int_0^1\frac{f(s)}{1-st}\,\dd s.
  \label{eq:radial-hilbert}
 \end{equation}
-Its continuous spectral multiplier may be obtained from an adjacent-interval finite Hilbert transform, from a commuting Sturm--Liouville expression, from Hilbert-matrix theory, or from a P\"oschl--Teller scattering problem; see, for example, \cite{KatsevichTovbis2016,AlemanMontesSarafoleanu2012,MontesVirtanen2025}.  The purpose of the present paper is to show that the full, non-rotationally symmetric problem is not merely a direct sum of unrelated radial calculations.  The angular blocks assemble into one hyperbolically invariant operator on the disk and this gives a diagonalization of this non-compact operator. 
+Its continuous spectral multiplier may be obtained from an adjacent-interval finite Hilbert transform, from a commuting Sturm--Liouville expression, from Hilbert-matrix theory, or from a P\"oschl--Teller scattering problem; see, for example, \cite{KatsevichTovbis2016,AlemanMontesSarafoleanu2012,MontesVirtanen2025}. The Finite Hilbert transform approach especially gives insight in to the non-compactness.  The finite Hilbert transform is on adjacent intervals, ie sharing one endpoint.  If a gap is introduced, in our case meaning the unknown parameter is known in a neighbourhood of the boundary, then the operator is compact. Simillarly if Neumann-to Dirichlet data is considered compactness is restored. In both these cases we do not (yet) have such an explicit diagonalization. 
+
+  The purpose of the present paper is to show that the full, non-rotationally symmetric problem is not merely a direct sum of unrelated radial calculations for different frequency modes.  The angular blocks assemble into one hyperbolically invariant operator on the disk and this gives a diagonalization of this non-compact operator. This gives a practically and theoretically satisfying  answer to an important special case of a long standing problem of importance in applications.
 
 The key bookkeeping observation is that a matrix element indexed by boundary Fourier frequencies $(k,l)$ depends on the two integers
 \begin{equation}
@@ -112,7 +116,7 @@ The admissible pairs satisfy
 \[
  n\geq |m|,\qquad n\equiv m\pmod 2,
 \]
-which is exactly the Zernike index lattice.  Counting every independent datum once, rather than with its raw matrix multiplicity, gives the moment map whose normal kernel is
+which is exactly the Zernike index lattice. Compare for example the diagonalization of the longitudinal tensor ray transform on the disk using Zernike disk functions \cite{KazantsevBukhgeim2004}.  Counting every independent datum once, rather than with its raw matrix multiplicity, gives the moment map whose normal kernel is
 \begin{equation}
  \kappa(z,w)=\frac1{\pi|1-z\overline w|^2}.
  \label{eq:intro-kernel}
@@ -148,7 +152,8 @@ the concentration of fine radial oscillations near the boundary.
 
 \end{enumerate}
 
-The distinction between multiplicity normalization and physical frequency weighting is important.  The former only removes repeated copies of identical linearized measurements.  A Sobolev, noise-whitening, Dirichlet-to-Neumann, or Neumann-to-Dirichlet weighting may introduce additional factors depending on $k$ and $l$ and therefore changes the normal operator.  The paper treats the equal-weight, non-redundant data space exactly.  \todo{After checking the original EIT normalization, state explicitly how this data norm relates to the physical DtN and NtD norms.}
+The distinction between multiplicity normalization and physical frequency weighting is important.  The former only removes repeated copies of identical linearized measurements.  A Sobolev, noise-whitening, Dirichlet-to-Neumann, or Neumann-to-Dirichlet weighting may introduce additional factors depending on $k$ and $l$ and therefore changes the normal operator.  The paper treats the equal-weight, non-redundant data space exactly.  
+%\todo{After checking the original EIT normalization, state explicitly how this data norm relates to the physical DtN and NtD norms.}
 
 \section{Linearization in an $L^2$ potential}
 \label{sec:linearization}
@@ -159,7 +164,10 @@ Let $\D\subset\R^2$ be the unit disk and consider
  \qquad u|_{\partial\D}=f.
  \label{eq:schrodinger-pde}
 \end{equation}
-For $q$ close to zero in $L^2(\D)$, write $\Lambda_q:H^{1/2}(\partial\D)\to H^{-1/2}(\partial\D)$ for the Dirichlet-to-Neumann map, with the outward normal convention.  Note that while this Schr\"odinger version has uses, the traditional problem is framed in terms of a conductivity, related to $\eta$ by a Liouville transformation. 
+For $q$ close to zero in $L^2(\D)$, write $\Lambda_q:H^{1/2}(\partial\D)\to H^{-1/2}(\partial\D)$ for the Dirichlet-to-Neumann map, with the outward normal convention.  Note that while this Schr\"odinger version has uses, the traditional problem is framed in terms of a conductivity, related to $\eta$ by a Liouville transformation.
+
+
+
 For a positive conductivity $\gamma$, the substitution
 $u=\gamma^{1/2}v$ transforms
 \[
@@ -175,6 +183,28 @@ If $\gamma=1$ in a neighbourhood of $\partial\D$, the corresponding
 boundary maps agree under this transformation.  For general boundary
 values of $\gamma$ there is also the standard boundary conjugation and
 zeroth-order correction.
+
+We use the standard Sobolev scale on the boundary circle.  Using the Fourier series
+\[
+\varphi_k(\theta)=(2\pi)^{-1/2}e^{ik\theta},
+\qquad
+f=\sum_{k\in\mathbb Z}\widehat f_k\varphi_k,
+\]
+we set
+\[
+\norm{f}_{H^s(\partial\D)}^2
+=
+\sum_{k\in\mathbb Z}(1+k^2)^s|\widehat f_k|^2.
+\]
+Thus $H^{-1/2}(\partial\D)$ is the dual of
+$H^{1/2}(\partial\D)$ with respect to the $L^2$ pairing.
+Any equivalent Sobolev norms would give the same operator spaces.
+For the interior space we use
+\[
+\norm{u}_{H^1(\D)}^2
+=
+\norm{u}_{L^2(\D)}^2+\norm{\nabla u}_{L^2(\D)}^2.
+\] 
 
 \begin{proposition}[Linearization at the zero potential]
 \label{prop:linearization}
@@ -205,7 +235,35 @@ for $\norm q_{L^2}$ sufficiently small.
 \end{proposition}
 
 \begin{proof}
-Multiplication by $q$ defines a bounded map $M_q:H^1(\D)\to H^{-1}(\D)$.  Indeed, the two-dimensional embedding $H^1(\D)\hookrightarrow L^4(\D)$ and Cauchy--Schwarz give
+For $u\in H^1(\D)$ and $v\in H_0^1(\D)$, H\"older's
+inequality with exponents $2,4,4$ gives
+\[
+\left|\int_{\D}q\,u\overline v\,\dd A\right|
+\leq
+\norm q_{L^2}\norm u_{L^4}\norm v_{L^4}.
+\]
+The Sobolev embeddings
+\[
+H^1(\D)\hookrightarrow L^4(\D),
+\qquad
+H_0^1(\D)\hookrightarrow L^4(\D)
+\]
+therefore imply
+\[
+\left|\int_{\D}q\,u\overline v\,\dd A\right|
+\leq
+C\norm q_{L^2}
+\norm u_{H^1}
+\norm v_{H_0^1}.
+\]
+Consequently,
+\[
+\norm{M_qu}_{H^{-1}}
+\leq C\norm q_{L^2}\norm u_{H^1}.
+\]	
+	
+	
+%Multiplication by $q$ defines a bounded map $M_q:H^1(\D)\to H^{-1}(\D)$.  Indeed, the two-dimensional embedding $H^1(\D)\hookrightarrow L^4(\D)$ and Cauchy--Schwarz give
 \begin{equation}
  \left|\int_{\D}q u\overline v\,\dd A\right|
  \leq \norm q_2\norm u_4\norm v_4
@@ -252,7 +310,7 @@ then \eqref{eq:linearized-DtN} yields
 \end{equation}
 Thus, up to the harmless sign convention for the object angular index, the datum depends only on $k-l$ and $|k|+|l|$.
 
-\todo{Check equation \eqref{eq:fourier-matrix-element} against the exact Fourier, complex-conjugation and DtN sign conventions used in the intended submission, including any conductivity-to-Schr\"odinger normalization.}
+%\todo{Check equation \eqref{eq:fourier-matrix-element} against the exact Fourier, complex-conjugation and DtN sign conventions used in the intended submission, including any conductivity-to-Schr\"odinger normalization.}
 
 \section{Non-redundant measurements and the Zernike lattice}
 \label{sec:nonredundant}
@@ -276,7 +334,7 @@ The fibre is nonempty precisely when
 \end{equation}
 For admissible $(m,n)$,
 \begin{equation}
- \#F_{m,n}=\nu(m,n)=
+ \#F_{m,n}=:\nu(m,n)=
  \begin{cases}
  |m|+1,&n=|m|,\\
  2,&n>|m|.
@@ -389,7 +447,6 @@ The boundedness proved in Proposition~\ref{prop:norm} then extends the quadratic
 
 The Poisson-kernel identity reassembles the angular blocks into the
 global kernel:
-\question{Not really reconstruction?}
 \begin{equation}
  \sum_{m\in\Z}\frac{(r\rho)^{|m|}}{1-r^2\rho^2}
  e^{im(\theta-\phi)}
@@ -404,7 +461,8 @@ Under $t=r^2$ and $s=\rho^2$, the $m$th radial block is unitarily equivalent to
 The case $m=0$ is exactly \eqref{eq:radial-hilbert}.
 
 \begin{remark}[Raw multiplicity]
-If the unreduced matrix is given the ordinary entrywise $\ell^2$ norm, the edge $n=|m|$ is over-counted.  In each angular block the raw normal kernel differs from a constant multiple of \eqref{eq:angular-block-r} by a rank-one term proportional to $r^{|m|}\rho^{|m|}$.  The normalization \eqref{eq:sharp-data-norm} removes precisely these exceptional edge terms.  \todo{Write the exact formula using the final Fourier normalization and decide whether it belongs in the main text or an appendix.}
+If the unreduced matrix is given the ordinary entrywise $\ell^2$ norm, the edge $n=|m|$ is over-counted.  In each angular block the raw normal kernel differs from a constant multiple of \eqref{eq:angular-block-r} by a rank-one term proportional to $r^{|m|}\rho^{|m|}$.  The normalization \eqref{eq:sharp-data-norm} removes precisely these exceptional edge terms. 
+% \todo{Write the exact formula using the final Fourier normalization and decide whether it belongs in the main text or an appendix.}
 \end{remark}
 
 \section{Exact norm and non-compactness}
@@ -550,7 +608,7 @@ Hence $\Delta_{H,z}\delta=-\delta^2=\Delta_{H,w}\delta$.  Using \eqref{eq:L-eucl
 The kernel depends on the angular variables only through $\theta-\phi$, so $\partial_\theta^2\kappa=\partial_\phi^2\kappa$.  Equations \eqref{eq:L-def} and \eqref{eq:L-kernel} prove \eqref{eq:kernel-commutator}.  For compactly supported $f$, formal self-adjointness and integration by parts have no boundary contribution, giving \eqref{eq:core-commutation}.
 \end{proof}
 
-\todo{Run the independent Mathematica check of \eqref{eq:kernel-commutator} in polar coordinates, retain the script with the paper archive, and compare its conventions with \eqref{eq:P-r}.}
+%\todo{Run the independent Mathematica check of \eqref{eq:kernel-commutator} in polar coordinates, retain the script with the paper archive, and compare its conventions with \eqref{eq:P-r}.}
 
 Equation \eqref{eq:core-commutation} alone does not specify a self-adjoint realization of the unbounded differential expression.  The canonical domain and full operator commutation will follow from the hyperbolic realization.
 
@@ -628,12 +686,31 @@ The endpoint kernel
 \]
 is not in $L^1(\mathbb H^2)$: $2\pi h(d)\sinh d\to1$ as $d\to\infty$.  It is in $L^2$.  Thus boundedness should not be justified by an $L^1$ Young inequality.  Proposition~\ref{prop:norm} establishes boundedness independently, and the spherical transform below identifies the bounded multiplier.
 
-\todo{Locate and cite the most explicit classical source for the precise $\lambda\downarrow1$ endpoint and its normalization; search the Berezin/representation-theory literature, including Russian-language antecedents, before making any priority statement about the transform formula itself.}
+%\todo{Locate and cite the most explicit classical source for the precise $\lambda\downarrow1$ endpoint and its normalization; search the Berezin/representation-theory literature, including Russian-language antecedents, before making any priority statement about the transform formula itself.}
 
-\section{Spherical multiplier and operator spectrum}
+
+\section{Hyperbolic spectral multiplier and operator spectrum}
 \label{sec:spectrum}
-
-The spectrum of $-\Delta_H$ on the hyperbolic plane is $[1/4,\infty)$ and is purely absolutely continuous \cite{Helgason1984}.  Write
+The spectrum of $-\Delta_H$ on the hyperbolic plane is
+$[1/4,\infty)$ and is purely absolutely continuous
+\cite{Helgason1984}.  For $\mu\geq0$, let
+\[
+\phi_\mu(d)
+=
+P_{-1/2+i\mu}(\cosh d),
+\qquad
+\Delta_H\phi_\mu
+=
+-\left(\mu^2+\frac14\right)\phi_\mu,
+\qquad
+\phi_\mu(0)=1.
+\]
+This is the normalized radial Laplace eigenfunction, traditionally
+called the zonal spherical function.  The transform of a radial
+kernel against $\phi_\mu$ is called the spherical transform; on
+$\mathbb H^2$ it is the order-zero Mehler--Fock transform, or
+equivalently the radial part of the Helgason--Fourier transform.
+ Write
 \begin{equation}
  \mathsf A=-\mathsf L-\frac14I\geq0.
  \label{eq:A}
@@ -645,23 +722,34 @@ The spherical eigenfunction with parameter $\mu\geq0$, normalized to be one at t
  \Delta_H\phi_\mu=-\left(\mu^2+\frac14\right)\phi_\mu.
 \]
 
+
 \begin{lemma}[Endpoint spherical transform]
-\label{lem:spherical-transform}
-For $\mu\geq0$,
-\begin{equation}
- \pi\int_1^\infty\frac{P_{-1/2+i\mu}(u)}{1+u}\,\dd u
- =\frac{\pi^2}{\cosh(\pi\mu)}.
- \label{eq:mehler-fock-integral}
-\end{equation}
-With the normalization in \eqref{eq:hyperbolic-convolution}, the corresponding multiplier is
-\begin{equation}
- \widehat h(\mu)=\frac{\pi}{\cosh(\pi\mu)}.
- \label{eq:multiplier}
-\end{equation}
+	\label{lem:spherical-transform}
+	For $\mu\geq0$,
+	\begin{equation}
+		\int_1^\infty
+		\frac{P_{-1/2+i\mu}(u)}{1+u}\,\dd u
+		=
+		\frac{\pi}{\cosh(\pi\mu)}.
+		\label{eq:mehler-fock-integral}
+	\end{equation}
+	Consequently, for
+	\[
+	h(d)=\frac1{4\pi}\sech^2(d/2),
+	\]
+	the spherical multiplier is
+	\[
+	\widehat h(\mu)=\frac{\pi}{\cosh(\pi\mu)}.
+	 \label{eq:multiplier}
+	\]
 \end{lemma}
 
+
 \begin{proof}
-In polar coordinates about $z$, the spherical transform of \eqref{eq:hyperbolic-convolution} is
+	
+For a radial convolution kernel on $\mathbb H^2$, the spectral
+multiplier is its spherical, or Mehler--Fock, transform.  In
+geodesic polar coordinates this is
 \[
  2\pi\int_0^\infty\frac1{4\pi}\sech^2(d/2)
  P_{-1/2+i\mu}(\cosh d)\sinh d\,\dd d.
@@ -670,10 +758,12 @@ Since $\frac12\sech^2(d/2)\sinh d=\frac{2\sinh d}{2(1+\cosh d)}=\frac{\sinh d}{1
 \[
  \int_1^\infty\frac{P_{-1/2+i\mu}(u)}{1+u}\,\dd u.
 \]
-The Mehler--Fock integral is the first equality in \eqref{eq:mehler-fock-integral}; its value follows from the hypergeometric representation and Euler's beta integral, or from the standard rank-one Berezin multiplier formula.  The factor $1/\pi$ in \eqref{eq:K-definition} gives \eqref{eq:multiplier}.
+The Mehler--Fock integral is the first equality in \eqref{eq:mehler-fock-integral}; its value follows from the hypergeometric representation and Euler's beta integral, or from the standard rank-one Berezin multiplier formula.  All normalization factors are already contained in
+$h(d)=(4\pi)^{-1}\sech^2(d/2)$, so the preceding integral is precisely
+the spherical multiplier.
 \end{proof}
 
-\todo{Check every factor of $2$ and $\pi$ in Lemma~\ref{lem:spherical-transform} against a cited Mehler--Fock or Berezin formula.  The independent checks $\widehat h(0)=\pi$ and $\norm K=\pi$ must agree.}
+%\todo{Check every factor of $2$ and $\pi$ in Lemma~\ref{lem:spherical-transform} against a cited Mehler--Fock or Berezin formula.  The independent checks $\widehat h(0)=\pi$ and $\norm K=\pi$ must agree.  Done}
 
 \begin{theorem}[Exact spectral formula]
 \label{thm:spectral-formula}
@@ -807,6 +897,23 @@ is the corresponding singular value of the truncated measurement
 map.
 
 
+The computed eigenvalues and eigenvectors are compared with the
+continuous spectral formula in two independent ways.  First, an
+effective spectral parameter is obtained from
+\[
+\mu_\lambda
+=
+\frac1\pi
+\operatorname{arcosh}\!\left(\frac{\pi}{\lambda_{m,j}^{(X,N)}}\right),
+\]
+which inverts the analytic multiplier
+$\lambda(\mu)=\pi/\cosh(\pi\mu)$.  Second, when sufficiently many
+radial zeros are present, $\mu$ is estimated from their asymptotic
+spacing $\Delta x\sim\pi/\mu$.  After the Liouville rescaling
+\eqref{eq:liouville-profile}, the numerical eigenvectors are compared
+directly with the associated Legendre/hypergeometric generalized
+eigenfunctions.
+
 The truncation makes every block compact; its discrete modes should be interpreted as spectral packets sampling the continuous parameter $\mu$, not as convergent eigenvalues of the infinite operator.
 
 
@@ -826,6 +933,54 @@ Figure~\ref{fig:global-order} shows the characteristic interlacing of angular fr
  \label{fig:analytic-comparison}
 \end{figure}
 \FloatBarrier
+
+Although the spectral decomposition is continuous, finite-dimensional
+discretizations produce ordinary singular vectors.  These should be
+interpreted as spectral packets associated with the generalized
+singular functions $\Phi_{m,\mu}$, rather than as approximations to
+isolated eigenfunctions of the infinite normal operator.
+
+Figure~\ref{fig:mode-gallery} displays selected finite-section modes
+ordered by their computed attenuation.  The ordering interlaces angular
+frequency and radial oscillation count: increasing the global mode
+number need not increase either quantity separately.  This behaviour,
+seen in earlier numerical singular value decompositions of EIT
+operators, follows naturally from the joint spectral parameters
+$(m,\mu)$.
+
+In the hyperbolic radial coordinate
+\[
+x=2\operatorname{arctanh}r,
+\]
+the transformed radial functions are asymptotically oscillatory with
+approximately constant wavelength $\pi/\mu$.  The compression of equal
+$x$-intervals as $r\to1$ explains the apparent concentration of radial
+resolution near the Euclidean boundary.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{figures/nonradial_singular_functions}
+	\caption{
+		Selected finite-section approximations to the generalized right
+		singular functions of the multiplicity-normalized linearized
+		measurement map.  Each mode is labelled by its angular frequency
+		$|m|$, the effective hyperbolic spectral parameter $\mu_\lambda$
+		obtained from
+		$
+		\lambda=\pi/\cosh (\pi \mu_\lambda),
+		$
+		and its radial zero count.  The modes are ordered globally by the
+		computed normal-operator eigenvalue.  The resulting sequence interlaces
+		angular and radial complexity.  The increasing concentration of radial
+		oscillations near $r=1$ is the Euclidean manifestation of approximately
+		uniform oscillation in hyperbolic radius.  For $|m|>0$, a second real
+		mode is obtained by replacing the cosine angular factor by a sine
+		factor.
+}
+	\label{fig:nonradialsingularfunctions}
+\end{figure}
+
+
 
 \todo{Repeat the convergence study under independent changes of $X$, radial quadrature size and angular cutoff; quantify residuals and profile errors; document the treatment of near-degenerate modes.  The present figures are exploratory, not a numerical-analysis theorem.}
 
@@ -850,20 +1005,20 @@ This route makes the data norm and the exceptional edge $n=|m|$ visible rather t
 
 Several related questions remain outside the scope of the present paper.  Frequency-weighted DtN or NtD data lead to logarithmic, dilogarithmic or shifted-polylogarithmic kernels; for the dilogarithm kernel a third-order adjoint intertwiner is available, but no explicit singular system is presently known.  If the perturbation is known near the boundary, the radial operator becomes compact and a commuting Heun equation appears.  These are separate spectral problems and are not needed for the present full-data result.
 
-\section{Checks required before submission}
-\label{sec:todos}
-
-The red items in the source are deliberately retained at this stage.  The principal checks are:
-\begin{enumerate}
-\item derive \eqref{eq:fourier-matrix-element} from the exact convention used for the Schr\"odinger boundary map and settle all signs and constants;
-\item state precisely how zero boundary frequency is handled and how the Schr\"odinger formulation relates to conductivity EIT;
-\item verify that the chosen non-redundant norm is the intended equal-information norm, and distinguish it from physical noise weighting;
-\item check \eqref{eq:kernel-commutator} independently by symbolic calculation;
-\item verify the spherical-transform normalization from a primary Berezin or Mehler--Fock source;
-\item complete the numerical convergence study or reduce the numerical claims accordingly;
-\item read every cited paper and audit all bibliography metadata;
-\item finalize authorship, CRediT roles, data/code archive and the generative-AI disclosure.
-\end{enumerate}
+%\section{Checks required before submission}
+%\label{sec:todos}
+%
+%The red items in the source are deliberately retained at this stage.  The principal checks are:
+%\begin{enumerate}
+%\item derive \eqref{eq:fourier-matrix-element} from the exact convention used for the Schr\"odinger boundary map and settle all signs and constants;
+%\item state precisely how zero boundary frequency is handled and how the Schr\"odinger formulation relates to conductivity EIT;
+%\item verify that the chosen non-redundant norm is the intended equal-information norm, and distinguish it from physical noise weighting;
+%\item check \eqref{eq:kernel-commutator} independently by symbolic calculation;
+%\item verify the spherical-transform normalization from a primary Berezin or Mehler--Fock source;
+%\item complete the numerical convergence study or reduce the numerical claims accordingly;
+%\item read every cited paper and audit all bibliography metadata;
+%\item finalize authorship, CRediT roles, data/code archive and the generative-AI disclosure.
+%\end{enumerate}
 
 \ack{This draft was developed with substantial assistance from ChatGPT (OpenAI), using GPT-5.6 Sol Pro through a ChatGPT Pro subscription, accessed in September 2026.  The assistance included proposing candidate derivations, symbolic and numerical checks, literature-search support and drafting.  The human author is responsible for checking every argument, computation, citation and originality claim.  \todo{Revise this disclosure after the final human verification record and author contributions are complete.}}
 
@@ -906,6 +1061,7 @@ Pw[u_] := 1/(4 rho) D[rho (1-rho^2)^2 D[u,rho],rho]
 FullSimplify[Pz[ker]-Pw[ker],
  Assumptions -> 0<r<1 && 0<rho<1 && Element[psi,Reals]]
 \end{lstlisting}
+which evaluates to zero. 
 
 \section{Conventions and alternative normalizations}
 \label{app:conventions}
