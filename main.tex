@@ -164,21 +164,22 @@ Let $\D\subset\R^2$ be the unit disk and consider
  \qquad u|_{\partial\D}=f.
  \label{eq:schrodinger-pde}
 \end{equation}
-For $q$ close to zero in $L^2(\D)$, write $\Lambda_q:H^{1/2}(\partial\D)\to H^{-1/2}(\partial\D)$ for the Dirichlet-to-Neumann map, with the outward normal convention.  Note that while this Schr\"odinger version has uses, the traditional problem is framed in terms of a conductivity, related to $\eta$ by a Liouville transformation.
-
-
+For $q$ close to zero in $L^2(\D)$, write $\Lambda_q:H^{1/2}(\partial\D)\to H^{-1/2}(\partial\D)$ for the Dirichlet-to-Neumann map, with the outward normal convention. 
+We work initially in the Schr\"odinger formulation.  Its relation to
+the conductivity equation and to the linearized conductivity
+Dirichlet-to-Neumann map is recorded after Proposition~\ref{prop:linearization}.
 
 For a positive conductivity $\gamma$, the substitution
 $u=\gamma^{1/2}v$ transforms
-\[
+\begin{equation} \label{eq:conductivity}
 \nabla\cdot(\gamma\nabla v)=0
-\]
+\end{equation}
 into
-\[
+\begin{equation}\label{eq:gammaq}
 (-\Delta+q_\gamma)u=0,
 \qquad
 q_\gamma=\gamma^{-1/2}\Delta\gamma^{1/2}.
-\]
+\end{equation}
 If $\gamma=1$ in a neighbourhood of $\partial\D$, the corresponding
 boundary maps agree under this transformation.  For general boundary
 values of $\gamma$ there is also the standard boundary conjugation and
@@ -288,11 +289,45 @@ The integration-by-parts formula commonly called Alessandrini's identity is
 \end{equation}
 Subtraction of \eqref{eq:linearized-DtN}, followed by \eqref{eq:multiplication-estimate}, gives \eqref{eq:quadratic-remainder}.  The same estimate with harmonic extensions gives \eqref{eq:derivative-bound}.
 \end{proof}
-
+\begin{remark}[Relation with conductivity perturbations]
+	For a positive conductivity $\gamma\in H^2(\D)$, the Liouville
+	substitution $u=\gamma^{1/2}v$ transforms \eqref{eq:conductivity} into  \eqref{eq:gammaq}. 
+	Since $H^2(\D)$ is a Banach algebra and embeds into 
+	$C^0(\overline\D)$, the map
+	\[
+	\gamma\longmapsto q_\gamma
+	\]
+	is locally real analytic from the open set of strictly positive
+	$H^2$ conductivities into $L^2(\D)$.  At the constant conductivity,
+	\[
+	Dq_1[h]=\frac12\Delta h.
+	\]
+	
+	If $\gamma=1$ in a neighbourhood of $\partial\D$, the conductivity
+	and Schr\"odinger Dirichlet-to-Neumann maps agree under the Liouville
+	transformation.  Consequently,
+	\[
+	D\Lambda^{\rm c}_1[h]
+	=
+	D\Lambda^{\rm s}_0\left[\frac12\Delta h\right],
+	\]
+	and Proposition~\ref{prop:linearization} gives
+	\[
+	\norm{D\Lambda^{\rm c}_1[h]}_{H^{1/2}\to H^{-1/2}}
+	\leq C\norm h_{H^2}.
+	\]
+	Without the boundary assumption, the two derivatives differ by
+	explicit terms involving the boundary traces of $h$ and
+	$\partial_\nu h$.  The diagonalization below is formulated in the
+	potential variable $\eta$; in the conductivity variable the forward
+	map is precomposed with $\frac12\Delta$.
+\end{remark}
 \begin{remark}
 The operator-series argument gives every Fr\'echet derivative, but only the first derivative is needed below.  We use \eqref{eq:alessandrini} in the standard descriptive sense; it is, at heart, the Green identity for two solutions \cite{Alessandrini1988}.
 \end{remark}
 
+We now remain in the Schr\"odinger formulation and compute the
+linearized measurements in the boundary Fourier basis.
 Let
 \begin{equation}
  \varphi_k(\theta)=(2\pi)^{-1/2}e^{ik\theta},\qquad k\in\Z.
@@ -311,6 +346,8 @@ then \eqref{eq:linearized-DtN} yields
 Thus, up to the harmless sign convention for the object angular index, the datum depends only on $k-l$ and $|k|+|l|$.
 
 %\todo{Check equation \eqref{eq:fourier-matrix-element} against the exact Fourier, complex-conjugation and DtN sign conventions used in the intended submission, including any conductivity-to-Schr\"odinger normalization.}
+
+
 
 \section{Non-redundant measurements and the Zernike lattice}
 \label{sec:nonredundant}
@@ -715,16 +752,14 @@ equivalently the radial part of the Helgason--Fourier transform.
  \mathsf A=-\mathsf L-\frac14I\geq0.
  \label{eq:A}
 \end{equation}
-The spherical eigenfunction with parameter $\mu\geq0$, normalized to be one at the origin, is
-\[
- \phi_\mu(d)=P_{-1/2+i\mu}(\cosh d),
- \qquad
- \Delta_H\phi_\mu=-\left(\mu^2+\frac14\right)\phi_\mu.
-\]
+%The spherical eigenfunction with parameter $\mu\geq0$, normalized to be one at the origin, is
+%\[
+% \phi_\mu(d)=P_{-1/2+i\mu}(\cosh d),
+% \qquad
+% \Delta_H\phi_\mu=-\left(\mu^2+\frac14\right)\phi_\mu.
+%\]
 
-
-\begin{lemma}[Endpoint spherical transform]
-	\label{lem:spherical-transform}
+\begin{lemma}[Mehler--Fock transform of the endpoint kernel]
 	For $\mu\geq0$,
 	\begin{equation}
 		\int_1^\infty
@@ -733,35 +768,149 @@ The spherical eigenfunction with parameter $\mu\geq0$, normalized to be one at t
 		\frac{\pi}{\cosh(\pi\mu)}.
 		\label{eq:mehler-fock-integral}
 	\end{equation}
-	Consequently, for
+	Consequently, the hyperbolic convolution kernel
 	\[
-	h(d)=\frac1{4\pi}\sech^2(d/2),
+	h(d)=\frac1{4\pi}\sech^2(d/2)
 	\]
-	the spherical multiplier is
+	has spectral multiplier
 	\[
 	\widehat h(\mu)=\frac{\pi}{\cosh(\pi\mu)}.
-	 \label{eq:multiplier}
 	\]
 \end{lemma}
 
-
 \begin{proof}
+	Put
+	\[
+	\nu=-\frac12+i\mu,
+	\qquad
+	a=-\nu=\frac12-i\mu.
+	\]
+	Thus $\nu+1=1-a$.  By the hypergeometric representation of
+	the Legendre function
+	\cite[\href{https://dlmf.nist.gov/14.3.E6}{DLMF 14.3.6}]
+	{NIST:DLMF},
+	\[
+	P_{-1/2+i\mu}(u)
+	=
+	{}_2F_1\left(
+	a,1-a;1;\frac{1-u}{2}
+	\right),
+	\qquad u>1.
+	\]
 	
-For a radial convolution kernel on $\mathbb H^2$, the spectral
-multiplier is its spherical, or Mehler--Fock, transform.  In
-geodesic polar coordinates this is
-\[
- 2\pi\int_0^\infty\frac1{4\pi}\sech^2(d/2)
- P_{-1/2+i\mu}(\cosh d)\sinh d\,\dd d.
-\]
-Since $\frac12\sech^2(d/2)\sinh d=\frac{2\sinh d}{2(1+\cosh d)}=\frac{\sinh d}{1+\cosh d}$, the substitution $u=\cosh d$ reduces this to
-\[
- \int_1^\infty\frac{P_{-1/2+i\mu}(u)}{1+u}\,\dd u.
-\]
-The Mehler--Fock integral is the first equality in \eqref{eq:mehler-fock-integral}; its value follows from the hypergeometric representation and Euler's beta integral, or from the standard rank-one Berezin multiplier formula.  All normalization factors are already contained in
-$h(d)=(4\pi)^{-1}\sech^2(d/2)$, so the preceding integral is precisely
-the spherical multiplier.
+	Make the substitution
+	\[
+	t=\frac{u-1}{u+1},
+	\qquad
+	u=\frac{1+t}{1-t}.
+	\]
+	Then
+	\[
+	\frac{\dd u}{1+u}=\frac{\dd t}{1-t},
+	\qquad
+	\frac{1-u}{2}=-\frac{t}{1-t}.
+	\]
+	Pfaff's transformation
+	\cite[\href{https://dlmf.nist.gov/15.8.E1}{DLMF 15.8.1}]
+	{NIST:DLMF}
+	gives
+	\[
+	{}_2F_1\left(
+	a,1-a;1;-\frac{t}{1-t}
+	\right)
+	=
+	(1-t)^a{}_2F_1(a,a;1;t).
+	\]
+	Therefore
+	\[
+	\int_1^\infty
+	\frac{P_{-1/2+i\mu}(u)}{1+u}\,\dd u
+	=
+	\int_0^1
+	(1-t)^{a-1}{}_2F_1(a,a;1;t)\,\dd t.
+	\]
+	
+	Termwise integration of the hypergeometric series yields
+	\[
+	\begin{aligned}
+		\int_0^1
+		(1-t)^{a-1}{}_2F_1(a,a;1;t)\,\dd t
+		&=
+		\frac1a\,{}_2F_1(a,a;a+1;1).
+	\end{aligned}
+	\]
+	Gauss' summation formula
+	\cite[NIST:DLMF 15.4.20]{NIST:DLMF}
+	then gives
+	\[
+	\frac1a\,{}_2F_1(a,a;a+1;1)
+	=
+	\Gamma(a)\Gamma(1-a).
+	\]
+	Finally, Euler's reflection formula gives
+	\[
+	\Gamma(a)\Gamma(1-a)
+	=
+	\frac{\pi}{\sin(\pi a)}
+	=
+	\frac{\pi}{\cosh(\pi\mu)}.
+	\]
+	
+	For the radial kernel $h$, geodesic polar coordinates give
+	\[
+	\begin{aligned}
+		\widehat h(\mu)
+		&=
+		2\pi\int_0^\infty
+		\frac1{4\pi}\sech^2(d/2)
+		P_{-1/2+i\mu}(\cosh d)\sinh d\,\dd d \\
+		&=
+		\int_1^\infty
+		\frac{P_{-1/2+i\mu}(u)}{1+u}\,\dd u,
+	\end{aligned}
+	\]
+	where $u=\cosh d$.  This proves the multiplier formula.
 \end{proof}
+%
+%\begin{lemma}[Endpoint spherical transform]
+%	\label{lem:spherical-transform}
+%	For $\mu\geq0$,
+%	\begin{equation}
+%		\int_1^\infty
+%		\frac{P_{-1/2+i\mu}(u)}{1+u}\,\dd u
+%		=
+%		\frac{\pi}{\cosh(\pi\mu)}.
+%		\label{eq:mehler-fock-integral}
+%	\end{equation}
+%	Consequently, for
+%	\[
+%	h(d)=\frac1{4\pi}\sech^2(d/2),
+%	\]
+%	the spherical multiplier is
+%	\[
+%	\widehat h(\mu)=\frac{\pi}{\cosh(\pi\mu)}.
+%	 \label{eq:multiplier}
+%	\]
+%\end{lemma}
+%
+%
+%\begin{proof}
+%	
+%For a radial convolution kernel on $\mathbb H^2$, the spectral
+%multiplier is its spherical, or Mehler--Fock, transform.  In
+%geodesic polar coordinates this is
+%\[
+% 2\pi\int_0^\infty\frac1{4\pi}\sech^2(d/2)
+% P_{-1/2+i\mu}(\cosh d)\sinh d\,\dd d.
+%\]
+%Since $\frac12\sech^2(d/2)\sinh d=\frac{2\sinh d}{2(1+\cosh d)}=\frac{\sinh d}{1+\cosh d}$, the substitution $u=\cosh d$ reduces this to
+%\[
+% \int_1^\infty\frac{P_{-1/2+i\mu}(u)}{1+u}\,\dd u.
+%\]
+%The Mehler--Fock integral is the first equality in \eqref{eq:mehler-fock-integral}; its value follows from the hypergeometric representation and Euler's beta integral, or from the standard rank-one Berezin multiplier formula.  All normalization factors are already contained in
+%$h(d)=(4\pi)^{-1}\sech^2(d/2)$, so the preceding integral is precisely
+%the spherical multiplier.
+%\end{proof}
 
 %\todo{Check every factor of $2$ and $\pi$ in Lemma~\ref{lem:spherical-transform} against a cited Mehler--Fock or Berezin formula.  The independent checks $\widehat h(0)=\pi$ and $\norm K=\pi$ must agree.  Done}
 
@@ -783,6 +932,23 @@ $K$ has purely absolutely continuous spectrum, is injective, and has dense non-c
 \begin{proof}
 The radial convolution in Theorem~\ref{thm:hyperbolic-conjugation} is diagonalized by the spherical/Helgason Fourier transform.  Lemma~\ref{lem:spherical-transform} gives the bounded multiplier $\pi\sech(\pi\mu)$, yielding \eqref{eq:exact-spectral-formula}.  The multiplier is continuous, strictly positive for finite $\mu$, decreases from $\pi$ to zero, and the hyperbolic Laplacian has purely absolutely continuous spectrum.  The stated consequences follow from the spectral theorem.
 \end{proof}
+
+\begin{remark}
+	The same calculation gives, for $\Re\alpha>1/2$,
+	\[
+	\int_1^\infty
+	\frac{P_{-1/2+i\mu}(u)}{(1+u)^\alpha}\,\dd u
+	=
+	2^{1-\alpha}
+	\frac{
+		\Gamma(\alpha-\frac12+i\mu)
+		\Gamma(\alpha-\frac12-i\mu)
+	}{\Gamma(\alpha)^2}.
+	\]
+	The case $\alpha=1$ is the endpoint kernel used above.  This
+	general identity also displays directly the gamma-function multipliers
+	of the weighted Berezin family.
+\end{remark}
 
 The formula also supplies the canonical closed realization of the commutator.  Let
 \begin{equation}
@@ -938,7 +1104,7 @@ interpreted as spectral packets associated with the generalized
 singular functions $\Phi_{m,\mu}$, rather than as approximations to
 isolated eigenfunctions of the infinite normal operator.
 
-Figure~\ref{fig:mode-gallery} displays selected finite-section modes
+Figure~\ref{fig:nonradialsingularfunctions} displays selected finite-section modes
 ordered by their computed attenuation.  The ordering interlaces angular
 frequency and radial oscillation count: increasing the global mode
 number need not increase either quantity separately.  This behaviour,
@@ -1001,7 +1167,7 @@ The abstract diagonalization belongs to established Berezin and symmetric-space 
 \end{equation*}
 This route makes the data norm and the exceptional edge $n=|m|$ visible rather than concealing them in a formal block sum.
 
-Several related questions remain outside the scope of the present paper.  Frequency-weighted Dirichlet to Neumann or Neumann to Dirichlet  data lead to logarithmic, dilogarithmic or shifted-polylogarithmic kernels; for the dilogarithm kernel a third-order adjoint intertwiner is available, but no explicit singular system is presently known.  If the perturbation is known near the boundary, the radial operator becomes compact and a commuting Heun equation appears.  These are separate spectral problems and are not needed for the present full-data result. The three dimensional analogue of the present problem seems, from a preliminary look, to fall to the same methods as used in this paper, albeit with a more elaborate redundancy weighting. 
+Several related questions remain outside the scope of the present paper.  Frequency-weighted Dirichlet to Neumann or Neumann to Dirichlet  data lead to logarithmic, dilogarithmic or shifted-polylogarithmic kernels; for the dilogarithm kernel a third-order adjoint intertwiner is available, but no explicit singular system is presently known.  If the perturbation is known near the boundary, the radial operator becomes compact and a commuting Heun equation appears.  These are separate spectral problems and are not needed for the present full-data result. The three dimensional analogue of the present problem may  fall to the same methods as used in this paper, albeit with a more elaborate redundancy weighting. 
 
 %\section{Checks required before submission}
 %\label{sec:todos}
