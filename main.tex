@@ -48,7 +48,7 @@
 \numberwithin{equation}{section}
 
 \hypersetup{
-  pdftitle={Explicit diagonalization of the linearized Calderón problem on the disk: multiplicity normalization and exponential spectral attenuation},
+  pdftitle={Explicit diagonalization of the linearized Calder\'on problem on the disk: multiplicity normalization and exponential spectral attenuation},
   pdfauthor={William R. B. Lionheart},
   colorlinks=true,
   linkcolor=blue!45!black,
@@ -60,7 +60,7 @@
 
 \articletype{Paper}
 
-\title{Explicit diagonalization of the linearized Calderón problem on the disk: multiplicity normalization and exponential spectral attenuation}
+\title{Explicit diagonalization of the linearized Calder\'on problem on the disk: multiplicity normalization and exponential spectral attenuation}
 
 \author{William R B Lionheart$^{1,*}$}
 
@@ -95,7 +95,7 @@ Calder\'on introduced the inverse boundary problem that now bears his name in th
 
 Numerical singular value decompositions of discretized versions of
 the linearized  problem have been considered since 
- the 1990s, eg \cite{breckon1990image}.  The problem is noted to be severely illposed with an exponential decay in singular values.  While numerical results give some insight into the severely illposed nature of the problem, and especially the insensitivity to interior perturbations in conductivity, an explicit form of these singular functions has been elusive. Inspired by the explicit singular value decomposition of the Radon on transform on the disk that was already well known in the 1980s, the author, as a naive doctoral student, assumed that it would be fairly straightforward to find such an explicit decomposition for the Calder\'on problem. The realization by the author that normal operator is {\em not} compact (see Prop \ref{prop:noncompact}), in around 2023, offered some explanation for decades of lack of progress, but also gave  a path to  the extensive body of literature on spectral theory of related operators
+ the 1990s, eg \cite{breckon1990image}.  The problem is noted to be severely illposed with an exponential decay in singular values.  While numerical results give some insight into the severely illposed nature of the problem, and especially the insensitivity to interior perturbations in conductivity, an explicit form of these singular functions has been elusive. Inspired by the explicit singular value decomposition of the Radon  transform on the disk that was already well known in the 1980s, the author, as a nai\"ve doctoral student, assumed that it would be fairly straightforward to find such an explicit decomposition for the Calder\'on problem. The realization by the author that normal operator is {\em not} compact (see Prop \ref{prop:noncompact}), in around 2023, offered some explanation for decades of lack of progress, but also gave  a path to  the extensive body of literature on spectral theory of related operators
  
   The radial subproblem, ie rotationally invariant unknown, corresponding to the $m=0$ angular Fourier
 block, is particularly transparent. For rotationally symmetric perturbations, a multiplicity-normalized normal operator reduces to the Hilbert kernel \cite{Lionheart2026AtLast}. 
@@ -103,7 +103,7 @@ block, is particularly transparent. For rotationally symmetric perturbations, a 
  (Hf)(t)=\int_0^1\frac{f(s)}{1-st}\,\dd s.
  \label{eq:radial-hilbert}
 \end{equation}
-Its continuous spectral multiplier may be obtained from an adjacent-interval finite Hilbert transform, from a commuting Sturm--Liouville expression, from Hilbert-matrix theory, or from a P\"oschl--Teller scattering problem; see, for example, \cite{KatsevichTovbis2016,AlemanMontesSarafoleanu2012,MontesVirtanen2025}. The Finite Hilbert transform approach especially gives insight in to the non-compactness.  The finite Hilbert transform is on adjacent intervals, ie sharing one endpoint.  If a gap is introduced, in our case meaning the unknown parameter is known in a neighbourhood of the boundary, then the operator is compact. Similarly if Neumann-to Dirichlet data is considered compactness is restored. However in both these cases we do not (yet) have such an explicit diagonalization. 
+Its continuous spectral multiplier may be obtained from an adjacent-interval finite Hilbert transform, from a commuting Sturm--Liouville expression, from Hilbert-matrix theory, or from a P\"oschl--Teller scattering problem; see, for example, \cite{KatsevichTovbis2016,AlemanMontesSarafoleanu2012,MontesVirtanen2025}. The Finite Hilbert transform approach especially gives insight in to the non-compactness.  The finite Hilbert transform is on adjacent intervals, ie sharing one endpoint.  If a gap is introduced, in our case meaning the unknown parameter is known in a neighbourhood of the boundary, then the operator is compact. Similarly if Neumann-to-Dirichlet data is considered compactness is restored. However in both these cases we do not (yet) have such an explicit diagonalization. 
 
   The purpose of the present paper is to show that the full, non-rotationally symmetric problem is not merely a direct sum of unrelated radial calculations for different frequency modes.  The angular blocks assemble into one hyperbolically invariant operator on the disk and this gives a diagonalization of this non-compact operator. This gives a practically and theoretically satisfying  answer to an important special case of a long standing problem of importance in applications.
 
@@ -769,9 +769,7 @@ the spherical multiplier.
 \label{thm:spectral-formula}
 On $L^2(\D,\dd A)$,
 \begin{equation}
- \boxed{\quad
  K=\pi\sech\!\left(\pi\sqrt{-\mathsf L-\tfrac14I}\right).
- \quad}
  \label{eq:exact-spectral-formula}
 \end{equation}
 In particular,
@@ -848,14 +846,14 @@ Formally,
 \end{equation}
 These are generalized, not square-integrable, eigenfunctions.
 
-Because $K=(\Sigma^\sharp)^*\Sigma^\sharp$, the generalized singular attenuation of the measurement map is
+Because $K=\mathcal{M}^*\mathcal{M}$, the generalized singular attenuation of the measurement map is
 \begin{equation}
  \sigma(\mu)=\left(\frac{\pi}{\cosh(\pi\mu)}\right)^{1/2}
  \sim\sqrt{2\pi}\,e^{-\pi\mu/2}
  \qquad(\mu\to\infty).
  \label{eq:singular-attenuation}
 \end{equation}
-Thus an $L^2$ perturbation component at hyperbolic frequency $\mu$ is exponentially suppressed in the data.  In a deterministic noise model $d^\delta=\Sigma^\sharp f+e$, $\norm e\leq\delta$, inversion of that component amplifies noise by approximately $\sigma(\mu)^{-1}$.  This is the appropriate continuous-spectrum analogue of exponentially decaying singular values.
+Thus an $L^2$ perturbation component at hyperbolic frequency $\mu$ is exponentially suppressed in the data.  In a deterministic noise model $d^\delta=\mathcal{M} f+e$, $\norm e\leq\delta$, inversion of that component amplifies noise by approximately $\sigma(\mu)^{-1}$.  This is the appropriate continuous-spectrum analogue of exponentially decaying singular values.
 
 The stable Liouville profile
 \begin{equation}
@@ -871,7 +869,7 @@ The potential is short range as $x\to\infty$, so $v$ is asymptotically oscillato
 
 The exponential multiplier should not be confused with compactness.  It is a nonzero multiplication function on a continuous spectral space; multiplication by such a function is not compact.  Proposition~\ref{prop:noncompact} gives an elementary manifestation of the same fact.
 
-\section{A brief finite-section experiment}
+\section{Numerical study with truncated radius}
 \label{sec:numerics}
 
 For illustration, we truncate the hyperbolic radial variable to
@@ -921,14 +919,14 @@ Figure~\ref{fig:global-order} shows the characteristic interlacing of angular fr
 
 \begin{figure}[htbp]
  \centering
- \includegraphics[width=0.93\textwidth]{figures/nonradial_global_singular_values.png}
+ \includegraphics[width=1.0\textwidth]{figures/nonradial_global_singular_values.png}
  \caption{Finite-section global ordering.  The singular values are compared with the analytic multiplier, while the lower panels display the angular frequency and radial-zero count of the correspondingly ordered mode.  The discrete ordering depends on the hyperbolic truncation, but the mixed angular--radial pattern is robust.}
  \label{fig:global-order}
 \end{figure}
 
 \begin{figure}[htbp]
  \centering
- \includegraphics[width=0.93\textwidth]{figures/nonradial_analytic_comparison.png}
+ \includegraphics[width=1.0\textwidth]{figures/nonradial_analytic_comparison.png}
  \caption{Comparison of finite-section numerical modes and associated Legendre/hypergeometric profiles in the Liouville variable.  The agreement away from the artificial boundary is a stronger check than singular-value matching alone.}
  \label{fig:analytic-comparison}
 \end{figure}
@@ -959,7 +957,7 @@ resolution near the Euclidean boundary.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/nonradial_singular_functions}
+	\includegraphics[width=1.0\linewidth]{figures/nonradial_singular_functions}
 	\caption{
 		Selected finite-section approximations to the generalized right
 		singular functions of the multiplicity-normalized linearized
@@ -1020,10 +1018,12 @@ Several related questions remain outside the scope of the present paper.  Freque
 %\item finalize authorship, CRediT roles, data/code archive and the generative-AI disclosure.
 %\end{enumerate}
 
-\ack{This draft was developed with substantial assistance from ChatGPT (OpenAI), using GPT-5.6 Sol Pro through a ChatGPT Pro subscription, accessed in September 2026.  The assistance included proposing candidate derivations, symbolic and numerical checks, literature-search support and drafting. In partuclar the LLM found the connection to yperbolic geometry and wighted Bergman Berezin transform.  The human author is responsible for checking every argument, computation, citation and originality claim. 
+\ack{This draft was developed with substantial assistance from ChatGPT (thanks for the access donated by OpenAI), using GPT-5.6 Sol Pro through a ChatGPT Pro subscription, accessed in September 2026.  The assistance included proposing candidate derivations, symbolic and numerical checks, literature-search support and drafting. In partuclar the LLM found the connection to yperbolic geometry and weighted Bergman Berezin transform.  The human author is responsible for checking every argument, computation, citation and originality claim.
+
+Part of this work was complete while the author was a Visiting Fellow at Clare Hall, Cambridge} 
 	% \todo{Revise this disclosure after the final human verification record and author contributions are complete.}}
 
-\roles{William R B Lionheart: conceptualization, methodology, investigation, validation, writing, and supervision. As well as the choice of problem the derivation of the kernel function of the normal operator and the multiplicity weighting was the human author's insight although the LLM was able to reproduce and extend this reasoning with minimal prompting.  
+\roles{William R B Lionheart: conceptualization, methodology, investigation, validation, writing, and supervision. As well as the choice of problem the derivation of the kernel function of the normal operator and the multiplicity weighting was the human author's insight although the LLM was able to reproduce and extend this reasoning with minimal prompting.  }
 	% \todo{Replace by the final CRediT statement if further authors join the paper.}}
 
 \data{The MATLAB code used for the exploratory finite-section figures is included with the present draft package.  A versioned public repository and a precise computational environment will be supplied with the submitted manuscript. \todo{Add repository DOI or URL and software versions.}}
@@ -1051,7 +1051,7 @@ and $\mathcal P_w$ is obtained by replacing $r$ by $\rho$.  Expansion over the c
 \[
  (\mathcal P_z-\mathcal P_w)\kappa=0.
 \]
-For reproducibility, the intended independent Mathematica check is:
+This can be checked in Mathematica as:
 \begin{lstlisting}[language=Mathematica,basicstyle=\ttfamily\footnotesize,frame=single,breaklines=true]
 ClearAll[r, rho, psi, ker, Pz, Pw];
 den = 1 - 2 r rho Cos[psi] + r^2 rho^2;
@@ -1065,13 +1065,13 @@ FullSimplify[Pz[ker]-Pw[ker],
 \end{lstlisting}
 which evaluates to zero. 
 
-\section{Conventions and alternative normalizations}
-\label{app:conventions}
-
-Changing from normalized boundary modes $(2\pi)^{-1/2}e^{ik\theta}$ to unnormalized modes rescales the data and hence $K$ by an overall constant.  Reversing the sign convention in the Fourier coefficient changes $m$ to $-m$ but leaves all kernels and spectra unchanged.  Replacing $(-\Delta+q)u=0$ by $\Delta u+qu=0$ reverses the sign of the linearized boundary map but not its normal operator.  These harmless choices should be separated from two non-harmless changes:
-\begin{enumerate}
-\item excluding or quotienting the constant boundary mode, which can alter low-rank edge terms;
-\item weighting measurements by powers of $|k|$ and $|l|$, which changes the radial coefficient sequence and therefore the degree of ill-posedness.
-\end{enumerate}
+%\section{Conventions and alternative normalizations}
+%\label{app:conventions}
+%
+%Changing from normalized boundary modes $(2\pi)^{-1/2}e^{ik\theta}$ to unnormalized modes rescales the data and hence $K$ by an overall constant.  Reversing the sign convention in the Fourier coefficient changes $m$ to $-m$ but leaves all kernels and spectra unchanged.  Replacing $(-\Delta+q)u=0$ by $\Delta u+qu=0$ reverses the sign of the linearized boundary map but not its normal operator.  These harmless choices should be separated from two non-harmless changes:
+%\begin{enumerate}
+%\item excluding or quotienting the constant boundary mode, which can alter low-rank edge terms;
+%\item weighting measurements by powers of $|k|$ and $|l|$, which changes the radial coefficient sequence and therefore the degree of ill-posedness.
+%\end{enumerate}
 
 \end{document}
