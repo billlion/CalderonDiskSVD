@@ -53,20 +53,6 @@ make
 
 The included `main.bbl` also makes it possible to inspect the manuscript if BibTeX is temporarily unavailable.
 
-## Status of the draft
-
-This is a research working draft, not a submission-ready manuscript. Red `TODO` boxes are deliberately visible. They identify, among other things:
-
-- the exact Fourier/sign/normalization audit from the original linearized boundary map;
-- treatment of the zero boundary mode and the conductivity-to-Schrodinger convention;
-- the distinction between multiplicity normalization and physical/noise weighting;
-- independent verification of the global PDE commutator;
-- the exact primary source and normalization for the Berezin/Mehler-Fock multiplier;
-- a modest but properly documented numerical convergence/residual study;
-- bibliography, authorship, CRediT, repository and AI-disclosure checks.
 
 The numerical section is intentionally brief. The current mathematical paper is meant to establish the measurement reduction, normal kernel, norm, non-compactness, global commutator, hyperbolic/Berezin identification and continuous spectral multiplier. A more extensive numerical-analysis contribution can be developed separately.
 
-## AI-assisted development
-
-The source contains a provisional disclosure of substantial ChatGPT assistance. It should be revised only after the human verification record, final model/version information, author list and contribution statement have been settled. The named human authors remain responsible for every theorem, calculation, citation, code result and originality claim.
