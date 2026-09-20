@@ -91,11 +91,16 @@ where $\mathsf L$ is the Euclidean-space realization unitarily equivalent to the
 
 \section{Introduction}
 
-Calder\'on introduced the inverse boundary problem that now bears his name in the conductivity setting \cite{Calderon1980}, including calculation of the Fr\'echet derivative and a proof of its injectivity.  This is important for medical, industrial and geophysical imaging, where it goes by various names including Electrical Impedance Tomography and Electrical Resistivity Tomography  \cite{adler2015electrical}.
+Calder\'on introduced the inverse boundary problem that now bears his name in the conductivity setting \cite{Calderon1980}, including calculation of the Fr\'echet derivative and a proof of its injectivity.  This is important for medical, industrial and geophysical imaging, where it goes by various names including Electrical Impedance Tomography (EIT) and Electrical Resistivity Tomography  \cite{adler2015electrical}.
 
-Numerical singular value decompositions of discretized versions of
-the linearized  problem have been considered since 
- the 1990s, eg \cite{breckon1990image}.  The problem is noted to be severely illposed with an exponential decay in singular values.  While numerical results give some insight into the severely illposed nature of the problem, and especially the insensitivity to interior perturbations in conductivity, an explicit form of these singular functions has been elusive. Inspired by the explicit singular value decomposition of the Radon  transform on the disk that was already well known in the 1980s, the author, as a nai\"ve doctoral student, assumed that it would be fairly straightforward to find such an explicit decomposition for the Calder\'on problem. The realization by the author that normal operator is {\em not} compact (see Prop \ref{prop:noncompact}), in around 2023, offered some explanation for decades of lack of progress, but also gave  a path to  the extensive body of literature on spectral theory of related operators
+
+ 
+ The singular value decomposition (SVD) of the matrix of the derivative of the discretized forward problem of  EIT  has played an important role in studying the ill-posedness and non-uniformity of resolution  since the 1980s.  Murai and Kagawa \cite{murai1985electrical} used a numerical SVD for their resistor mesh/FEM model. The Brecon and Pidccock also calculated the SVD using a FEM model and in \cite{breckon1988some} used the singular values to show the relative unimportance of drive pair separation.  Also  in  1988 Connoly and Wall \cite{connolly1988inverse} published a plot of the singular values calculated numerically  for the rotationally symmetric case. Plots of the singular functions calculated numerically for the disk were shown in a  keynote talk ‘What can you see with EIT” by the  author at 3rd EU
+ Workshop on EIT Copenhagen in 1990 and also in his PhD thesis \cite{breckon1990image}. 
+ 
+ 
+ 
+  The problem is noted to be severely illposed with an exponential decay in singular values.  While numerical results give some insight into the severely illposed nature of the problem, and especially the insensitivity to interior perturbations in conductivity, an explicit form of these singular functions has been elusive. Inspired by the explicit singular value decomposition of the Radon  transform on the disk that was already well known in the 1980s, the author, as a nai\"ve doctoral student, assumed that it would be fairly straightforward to find such an explicit decomposition for the Calder\'on problem. The realization by the author that normal operator is {\em not} compact (see Prop \ref{prop:noncompact}), in around 2023, offered some explanation for decades of lack of progress, but also gave  a path to  the extensive body of literature on spectral theory of related operators
  
   The radial subproblem, ie rotationally invariant unknown, corresponding to the $m=0$ angular Fourier
 block, is particularly transparent. For rotationally symmetric perturbations, a multiplicity-normalized normal operator reduces to the Hilbert kernel \cite{Lionheart2026AtLast}. 
