@@ -1,0 +1,16 @@
+\documentclass[11pt]{article}
+ \usepackage{amsmath,amssymb,amsthm} 
+ \usepackage{hyperref} 
+ \title{A Mehler--Fock Transform Pair} \author{} \date{} 
+ \begin{document} 
+ 	\maketitle 
+ 	Let \[ (\mathcal M f)(\tau) = \int_1^\infty f(x)\, P_{-\frac12+i\tau}(x)\,dx, \qquad \tau\ge 0, \] denote the zero-order Mehler--Fock transform. We compute the transform of \[ f_\alpha(x)=(1+x)^{-\alpha}, \qquad \Re \alpha>0. \] 
+ 	\section*{The transform} Set \[ \nu=-\frac12+i\tau. \] With \[ t=\frac{x-1}{x+1}, \qquad x=\frac{1+t}{1-t}, \] one finds \[ \frac{dx}{(1+x)^\alpha} = 2^{1-\alpha}(1-t)^{\alpha-2}\,dt. \] Using the hypergeometric representation of the Legendre function (DLMF 14.3.6), \[ P_\nu(z) = {}_2F_1\!\left( -\nu,\nu+1;1;\frac{1-z}{2} \right), \] together with Pfaff's transformation (DLMF 15.8.1), \[ P_\nu\!\left(\frac{1+t}{1-t}\right) = (1-t)^{-\nu} \,{}_2F_1(-\nu,-\nu;1;t), \] we obtain \[ (\mathcal M f_\alpha)(\tau) = 2^{1-\alpha} \int_0^1 (1-t)^{\alpha-\nu-2} {}_2F_1(-\nu,-\nu;1;t)\,dt. \] 
+ 	Applying Euler's beta-integral identity for hypergeometric functions (DLMF 15.6.1) gives \[ (\mathcal M f_\alpha)(\tau) = 2^{1-\alpha} B(1,\alpha-\nu-1) \,{}_2F_1(-\nu,-\nu;\alpha-\nu;1). \] Since \[ B(1,\alpha-\nu-1) = \frac1{\alpha-\nu-1}, \] Gauss' summation formula (DLMF 15.4.20) yields \[ (\mathcal M f_\alpha)(\tau) = 2^{1-\alpha} \frac{\Gamma(\alpha-\nu)\Gamma(\alpha+\nu+1)} {\Gamma(\alpha)^2} \frac1{\alpha-\nu-1}. \] Using \[ \Gamma(\alpha-\nu) = (\alpha-\nu-1)\Gamma(\alpha-\nu-1), \] the prefactor cancels and we arrive at \[ \boxed{ (\mathcal M f_\alpha)(\tau) = 2^{1-\alpha} \frac{ \Gamma(\alpha-\nu-1) \Gamma(\alpha+\nu+1) }{ \Gamma(\alpha)^2 }. } \] Substituting \( \nu=-\frac12+i\tau \) gives \[ \boxed{ (\mathcal M f_\alpha)(\tau) = 2^{1-\alpha} \frac{ \Gamma\!\left(\alpha-\frac12-i\tau\right) \Gamma\!\left(\alpha-\frac12+i\tau\right) }{ \Gamma(\alpha)^2 }. } \] 
+ 	
+ 	\section*{Example} For $\alpha=1$, \[ (\mathcal M f_1)(\tau) = \Gamma\!\left(\frac12-i\tau\right) \Gamma\!\left(\frac12+i\tau\right). \] Using the gamma-product identity (DLMF 5.5.5), \[ \Gamma\!\left(\frac12+i\tau\right) \Gamma\!\left(\frac12-i\tau\right) = \frac{\pi}{\cosh(\pi\tau)}, \] we obtain \[ \boxed{ \int_1^\infty \frac{ P_{-\frac12+i\tau}(x) }{ 1+x }\,dx = \frac{\pi}{\cosh(\pi\tau)} = \pi\,\operatorname{sech}(\pi\tau). } \] 
+ 	
+ 	\section*{References} 
+ 	\begin{enumerate} \item NIST Digital Library of Mathematical Functions, \url{https://dlmf.nist.gov}. \item DLMF 14.3.6: Hypergeometric representation of \(P_\nu\). \item DLMF 15.8.1: Pfaff transformation. \item DLMF 15.6.1: Euler-type beta integral for hypergeometric functions. \item DLMF 15.4.20: Gauss summation formula. \item DLMF 5.5.5: \( \Gamma(\tfrac12+z) \Gamma(\tfrac12-z) =\pi/\cos(\pi z) \). 
+ \end{enumerate} 
+\end{document}
