@@ -9,6 +9,7 @@ Working LaTeX project intended for submission to **Inverse Problems**.
 - `main.pdf` - compiled working draft (16 pages in the bundled local fallback style).
 - `main.bbl` - generated bibliography, included for portability.
 - `figures/` - the two figures used in the paper, plus one additional exploratory figure.
+- `iopart-num-titles.bst` - a modified bibtex style like the iopart but giving names of papers
 - `code/calderon_hyperbolic_model.m` - exploratory MATLAB finite-section calculation.
 - `code/check_global_commutator.wl` - Mathematica check of the global kernel identity.
 - `TODO.md` - pre-submission mathematical, numerical, bibliographic and publication checks.
