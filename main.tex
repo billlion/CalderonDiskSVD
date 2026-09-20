@@ -160,7 +160,6 @@ the concentration of fine radial oscillations near the boundary.
 
 The distinction between multiplicity normalization and physical frequency weighting is important.  The former assigns one unit of weight to each algebraically independent tangent datum.  A Sobolev, covariance-whitening, Dirichlet-to-Neumann, or Neumann-to-Dirichlet weighting may introduce additional factors depending on $k$ and $l$ and therefore changes the normal operator.  The paper treats the equal-weight, non-redundant tangent data space exactly; it does not claim that this is the unique physical noise norm for an electrode experiment.
 
-%\todo{After checking the original EIT normalization, state explicitly how this data norm relates to the physical DtN and NtD norms.}
 
 \section{Linearization in an $L^2$ potential}
 \label{sec:linearization}
@@ -327,8 +326,6 @@ then \eqref{eq:linearized-DtN} yields
  \label{eq:fourier-matrix-element}
 \end{equation}
 Thus, up to the harmless sign convention for the object angular index, the datum depends only on $k-l$ and $|k|+|l|$.
-
-%\todo{Check equation \eqref{eq:fourier-matrix-element} against the exact Fourier, complex-conjugation and DtN sign conventions used in the intended submission, including any conductivity-to-Schr\"odinger normalization.}
 
 
 
@@ -679,7 +676,6 @@ Hence $\Delta_{H,z}\delta=-\delta^2=\Delta_{H,w}\delta$.  Using \eqref{eq:L-eucl
 The kernel depends on the angular variables only through $\theta-\phi$, so $\partial_\theta^2\kappa=\partial_\phi^2\kappa$.  Equations \eqref{eq:L-def} and \eqref{eq:L-kernel} prove \eqref{eq:kernel-commutator}.  For compactly supported $f$, formal self-adjointness and integration by parts have no boundary contribution, giving \eqref{eq:core-commutation}.
 \end{proof}
 
-%\todo{Run the independent Mathematica check of \eqref{eq:kernel-commutator} in polar coordinates, retain the script with the paper archive, and compare its conventions with \eqref{eq:P-r}.}
 
 Equation \eqref{eq:core-commutation} alone does not specify a self-adjoint realization of the unbounded differential expression.  The canonical domain and full operator commutation will follow from the hyperbolic realization.
 
@@ -766,7 +762,7 @@ The endpoint kernel
 \]
 is not in $L^1(\mathbb H^2)$: $2\pi h(d)\sinh d\to1$ as $d\to\infty$.  It is in $L^2$.  Thus boundedness should not be justified by an $L^1$ Young inequality.  Proposition~\ref{prop:norm} establishes boundedness independently, and the spherical transform below identifies the bounded multiplier.
 
-%\todo{Locate and cite the most explicit classical source for the precise $\lambda\downarrow1$ endpoint and its normalization; search the Berezin/representation-theory literature, including Russian-language antecedents, before making any priority statement about the transform formula itself.}
+
 
 
 \section{Hyperbolic spectral multiplier and operator spectrum}
@@ -815,12 +811,7 @@ equivalently the radial part of the Helgason--Fourier transform.
  \mathsf A=-\mathsf L-\frac14I\geq0.
  \label{eq:A}
 \end{equation}
-%The spherical eigenfunction with parameter $\mu\geq0$, normalized to be one at the origin, is
-%\[
-% \phi_\mu(d)=P_{-1/2+i\mu}(\cosh d),
-% \qquad
-% \Delta_H\phi_\mu=-\left(\mu^2+\frac14\right)\phi_\mu.
-%\]
+
 
 \begin{lemma}[Mehler--Fock transform of the endpoint kernel]
     \label{lem:mehler-fock}
@@ -935,48 +926,7 @@ equivalently the radial part of the Helgason--Fourier transform.
 	\]
 	where $u=\cosh d$.  This proves the multiplier formula.
 \end{proof}
-%
-%\begin{lemma}[Endpoint spherical transform]
-%	\label{lem:spherical-transform}
-%	For $\mu\geq0$,
-%	\begin{equation}
-%		\int_1^\infty
-%		\frac{P_{-1/2+i\mu}(u)}{1+u}\,\dd u
-%		=
-%		\frac{\pi}{\cosh(\pi\mu)}.
-%		\label{eq:mehler-fock-integral}
-%	\end{equation}
-%	Consequently, for
-%	\[
-%	h(d)=\frac1{4\pi}\sech^2(d/2),
-%	\]
-%	the spherical multiplier is
-%	\[
-%	\widehat h(\mu)=\frac{\pi}{\cosh(\pi\mu)}.
-%	 \label{eq:multiplier}
-%	\]
-%\end{lemma}
-%
-%
-%\begin{proof}
-%	
-%For a radial convolution kernel on $\mathbb H^2$, the spectral
-%multiplier is its spherical, or Mehler--Fock, transform.  In
-%geodesic polar coordinates this is
-%\[
-% 2\pi\int_0^\infty\frac1{4\pi}\sech^2(d/2)
-% P_{-1/2+i\mu}(\cosh d)\sinh d\,\dd d.
-%\]
-%Since $\frac12\sech^2(d/2)\sinh d=\frac{2\sinh d}{2(1+\cosh d)}=\frac{\sinh d}{1+\cosh d}$, the substitution $u=\cosh d$ reduces this to
-%\[
-% \int_1^\infty\frac{P_{-1/2+i\mu}(u)}{1+u}\,\dd u.
-%\]
-%The Mehler--Fock integral is the first equality in \eqref{eq:mehler-fock-integral}; its value follows from the hypergeometric representation and Euler's beta integral, or from the standard rank-one Berezin multiplier formula.  All normalization factors are already contained in
-%$h(d)=(4\pi)^{-1}\sech^2(d/2)$, so the preceding integral is precisely
-%the spherical multiplier.
-%\end{proof}
 
-%\todo{Check every factor of $2$ and $\pi$ in Lemma~\ref{lem:spherical-transform} against a cited Mehler--Fock or Berezin formula.  The independent checks $\widehat h(0)=\pi$ and $\norm K=\pi$ must agree.  Done}
 
 \begin{theorem}[Exact spectral formula]
 \label{thm:spectral-formula}
@@ -1233,20 +1183,7 @@ The exact diagonalization is therefore a statement about a specified local exper
 
 Several related questions remain outside the scope of the present paper.  Frequency-weighted Dirichlet-to-Neumann or Neumann-to-Dirichlet  data lead to logarithmic, dilogarithmic or shifted-polylogarithmic kernels; for the dilogarithm kernel a third-order adjoint intertwiner is available, but no explicit singular system is presently known.  If the perturbation is known near the boundary, the radial operator becomes compact and a commuting Heun equation appears.  These are separate spectral problems and are not needed for the present full-data result. The three-dimensional analogue of the present problem may  fall to the same methods as used in this paper, albeit with a more elaborate redundancy weighting. 
 
-%\section{Checks required before submission}
-%\label{sec:todos}
-%
-%The red items in the source are deliberately retained at this stage.  The principal checks are:
-%\begin{enumerate}
-%\item derive \eqref{eq:fourier-matrix-element} from the exact convention used for the Schr\"odinger boundary map and settle all signs and constants;
-%\item state precisely how zero boundary frequency is handled and how the Schr\"odinger formulation relates to conductivity EIT;
-%\item verify that the chosen non-redundant norm is the intended equal-information norm, and distinguish it from physical noise weighting;
-%\item check \eqref{eq:kernel-commutator} independently by symbolic calculation;
-%\item verify the spherical-transform normalization from a primary Berezin or Mehler--Fock source;
-%\item complete the numerical convergence study or reduce the numerical claims accordingly;
-%\item read every cited paper and audit all bibliography metadata;
-%\item finalize authorship, CRediT roles, data/code archive and the generative-AI disclosure.
-%\end{enumerate}
+
 
 \ack{This work was developed with substantial assistance from ChatGPT (OpenAI), using GPT-5.6 Sol Pro through a ChatGPT Pro subscription in September 2026; OpenAI provided access free of charge.  The assistance included proposing candidate derivations, symbolic and numerical code, literature-search suggestions, and draft prose.  In particular, the system proposed the hyperbolic/Berezin interpretation.  The author formulated the inverse problem and the multiplicity normalization, derived the normal kernel, selected and developed the final arguments, executed and reviewed the computations, checked the cited identities, and assumes responsibility for all mathematical claims, references and originality statements.
 
