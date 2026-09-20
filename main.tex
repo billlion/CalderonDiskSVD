@@ -38,6 +38,9 @@
 \newcommand{\norm}[1]{\lVert #1\rVert}
 \newcommand{\ip}[2]{\langle #1,#2\rangle}
 \newcommand{\todo}[1]{{\color{red!75!black}\textbf{[TODO:} #1\textbf{]}}}
+% Suggested revisions in this review copy are shown in blue.
+\newcommand{\rev}[1]{{\color{blue!65!black}#1}}
+\newenvironment{revision}{\begingroup\color{blue!65!black}}{\endgroup}
 \newcommand{\R}{\mathbb R}
 \newcommand{\N}{\mathbb N}
 \newcommand{\Z}{\mathbb Z}
@@ -71,46 +74,41 @@
 \keywords{Calder\'on problem, electrical impedance tomography, diagonalization,  Berezin transform, hyperbolic Laplacian, Zernike lattice, generalized singular functions}
 
 \begin{abstract}
-	
-	We study the full angular dependence of the linearized Schr\"odinger
-	form of the Calder\'on problem on the unit disk.  We obtain an explicit
-	continuous spectral diagonalization of its normal operator and hence a
-	generalized singular system for the linearized forward map.
- After removing repeated boundary Fourier measurements, the independent data are indexed by the Zernike lattice.  Their normal operator is
+We study the full angular dependence of the linearized Schr\"odinger form of the Calder\'on problem on the unit disk.  We obtain an explicit continuous spectral diagonalization of its normal operator and hence a generalized singular system for the linearized forward map.  To our knowledge, this is the first such diagonalization for the full angularly dependent, multiplicity-normalized linearized measurement map on the disk.
+
+The decisive step is to collapse the exact redundancy classes in the boundary Fourier matrix and to assign equal weight to each algebraically independent moment.  The resulting data are indexed by the Zernike lattice, and their normal operator is
 \[
  (Kf)(z)=\frac1\pi\int_{\D}\frac{f(w)}{|1-z\overline w|^2}\,\dd A(w).
 \]
-A weighted Schur estimate gives the exact norm $\|K\|=\pi$, and a weakly null sequence of boundary annuli proves non-compactness before spectral theory is invoked.  We identify a second-order differential expression on the disk satisfying a direct global kernel commutator identity.  Multiplication by $(1-|z|^2)/2$ conjugates its canonical realization to the Poincar\'e Laplacian and conjugates $K$ to hyperbolic convolution with $(4\pi)^{-1}\sech^2(d_H/2)$.  This is a renormalized Hardy-endpoint member of the disk Berezin family.  Classical spherical harmonic analysis then yields
+A weighted Schur estimate gives the exact norm $\|K\|=\pi$, and a weakly null sequence of boundary annuli proves non-compactness before spectral theory is invoked.  We identify a second-order differential expression on the disk satisfying a direct global kernel commutator identity.  Multiplication by $(1-|z|^2)/2$ conjugates its canonical realization to the Poincar\'e Laplacian and conjugates $K$ to hyperbolic convolution with $(4\pi)^{-1}\sech^2(d_H/2)$.  This is the renormalized $s=1$ endpoint of the weighted disk Berezin family.  Classical hyperbolic harmonic analysis then yields
 \[
  K=\pi\sech\!\left(\pi\sqrt{-\mathsf L-\tfrac14}\right),
 \]
-where $\mathsf L$ is the Euclidean-space realization unitarily equivalent to the hyperbolic Laplacian.  Hence $K$ has purely absolutely continuous spectrum $[0,\pi]$, and its generalized singular attenuation is exponential in hyperbolic frequency.  We give the associated Legendre and hypergeometric modes and a brief finite-section numerical check.  The classical Berezin diagonalization is not claimed as new; the main point is that this Hardy-endpoint operator arises naturally from multiplicity-normalized linearized Calder\'on measurements.
+where $\mathsf L$ is the Euclidean-space realization unitarily equivalent to the hyperbolic Laplacian.  Hence $K$ has purely absolutely continuous spectrum $[0,\pi]$, and its generalized singular attenuation is exponential in hyperbolic frequency.  We give the associated Legendre and hypergeometric modes and a brief finite-section numerical check.  The abstract Berezin diagonalization belongs to established harmonic analysis; the new inverse-problem result is the derivation of this endpoint operator from the multiplicity-normalized linearized Calder\'on measurements.
 \end{abstract}
 
 
 
 \section{Introduction}
 
-Calder\'on introduced the inverse boundary problem that now bears his name in the conductivity setting \cite{Calderon1980}, including calculation of the Fr\'echet derivative and a proof of its injectivity.  This is important for medical, industrial and geophysical imaging, where it goes by various names including Electrical Impedance Tomography (EIT) and Electrical Resistivity Tomography  \cite{adler2015electrical}.
+Calder\'on introduced the inverse boundary problem that now bears his name in the conductivity setting \cite{Calderon1980}, including calculation of the Fr\'echet derivative and a proof of its injectivity.  This is  important for medical, industrial and geophysical imaging, where the technique goes by various names including Electrical Impedance Tomography (EIT) and Electrical Resistivity Tomography  \cite{adler2015electrical}.
 
 
  
- The singular value decomposition (SVD) of the matrix of the derivative of the discretized forward problem of  EIT  has played an important role in studying the ill-posedness and non-uniformity of resolution  since the 1980s.  Murai and Kagawa \cite{murai1985electrical} used a numerical SVD for their resistor mesh/FEM model. The Brecon and Pidccock also calculated the SVD using a FEM model and in \cite{breckon1988some} used the singular values to show the relative unimportance of drive pair separation.  Also  in  1988 Connoly and Wall \cite{connolly1988inverse} published a plot of the singular values calculated numerically  for the rotationally symmetric case. Plots of the singular functions calculated numerically for the disk were shown in a  keynote talk ‘What can you see with EIT” by the  author at 3rd EU
- Workshop on EIT Copenhagen in 1990 and also in his PhD thesis \cite{breckon1990image}. 
- 
- 
- 
-  The problem is noted to be severely illposed with an exponential decay in singular values.  While numerical results give some insight into the severely illposed nature of the problem, and especially the insensitivity to interior perturbations in conductivity, an explicit form of these singular functions has been elusive. Inspired by the explicit singular value decomposition of the Radon  transform on the disk that was already well known in the 1980s, the author, as a nai\"ve doctoral student, assumed that it would be fairly straightforward to find such an explicit decomposition for the Calder\'on problem. The realization by the author that normal operator is {\em not} compact (see Prop \ref{prop:noncompact}), in around 2023, offered some explanation for decades of lack of progress, but also gave  a path to  the extensive body of literature on spectral theory of related operators
- 
-  The radial subproblem, ie rotationally invariant unknown, corresponding to the $m=0$ angular Fourier
-block, is particularly transparent. For rotationally symmetric perturbations, a multiplicity-normalized normal operator reduces to the Hilbert kernel \cite{Lionheart2026AtLast}. 
+The singular value decomposition (SVD) of discretized EIT Jacobians has been used to study ill-posedness and non-uniform resolution since the mid-1980s.  Murai and Kagawa \cite{murai1985electrical} computed a numerical SVD for a resistor-mesh/finite-element model.  Breckon and Pidcock \cite{breckon1988some} used singular values from a finite-element model to assess the relative importance of drive-pair separation, and Connolly and Wall \cite{connolly1988inverse} published numerical singular values for a rotationally symmetric problem.  Numerical singular functions for the disk were presented by the author at the Third European Workshop on EIT in Copenhagen in 1990 and in the author's doctoral thesis, submitted under the name W. R. Breckon \cite{breckon1990image}.
+
+These computations already showed severe ill-posedness, strongly non-uniform resolution, and weak sensitivity to interior perturbations.  Nevertheless, an explicit analytic singular system for the full angular problem has remained unavailable for roughly four decades.  The contrast with the classical Zernike SVD of the Radon transform on the disk made this absence particularly conspicuous.  A key change of viewpoint came from recognizing that the continuum normal operator is not compact (Proposition~\ref{prop:noncompact}); the appropriate analogue of an SVD is therefore a continuous spectral diagonalization rather than a discrete singular sequence.
+
+
+The radial subproblem---that is, the $m=0$ angular Fourier block corresponding to rotationally invariant perturbations---is particularly transparent.  For rotationally symmetric perturbations, a multiplicity-normalized normal operator reduces to the Hilbert kernel \cite{Lionheart2026AtLast}.
 \begin{equation}
  (Hf)(t)=\int_0^1\frac{f(s)}{1-st}\,\dd s.
  \label{eq:radial-hilbert}
 \end{equation}
-Its continuous spectral multiplier may be obtained from an adjacent-interval finite Hilbert transform, from a commuting Sturm--Liouville expression, from Hilbert-matrix theory, or from a P\"oschl--Teller scattering problem; see, for example, \cite{KatsevichTovbis2016,AlemanMontesSarafoleanu2012,MontesVirtanen2025}. The Finite Hilbert transform approach especially gives insight in to the non-compactness.  The finite Hilbert transform is on adjacent intervals, ie sharing one endpoint.  If a gap is introduced, in our case meaning the unknown parameter is known in a neighbourhood of the boundary, then the operator is compact. Similarly if Neumann-to-Dirichlet data is considered compactness is restored. However in both these cases we do not (yet) have such an explicit diagonalization. 
+Its continuous spectral multiplier may be obtained from an adjacent-interval finite Hilbert transform, from a commuting Sturm--Liouville expression, from Hilbert-matrix theory, or from a P\"oschl--Teller scattering problem; see, for example, \cite{KatsevichTovbis2016,AlemanMontesSarafoleanu2012,MontesVirtanen2025}.  The finite-Hilbert-transform route is especially informative about non-compactness: the intervals share an endpoint.  Introducing a gap---which in the present problem corresponds to knowing the perturbation in a neighbourhood of the boundary---makes the radial operator compact.  Compactness is also restored for the frequency-weighted Neumann-to-Dirichlet formulation, but an explicit singular system is not presently known in either variant.
 
-  The purpose of the present paper is to show that the full, non-rotationally symmetric problem is not merely a direct sum of unrelated radial calculations for different frequency modes.  The angular blocks assemble into one hyperbolically invariant operator on the disk and this gives a diagonalization of this non-compact operator. This gives a practically and theoretically satisfying  answer to an important special case of a long-standing problem of importance in applications.
+The purpose of this paper is to solve the full angular problem for a symmetry-adapted, equal-weight non-redundant Hilbert realization of the derivative at the zero potential.  The result is not merely a collection of separated radial formulas: all angular blocks assemble into one hyperbolically invariant operator on the disk.  To our knowledge, this gives the first explicit diagonalization of the full angularly dependent, multiplicity-normalized linearized Calder\'on measurement map in this setting and resolves an analytic question that has been investigated numerically since the earliest EIT SVD studies.
+
 
 The key bookkeeping observation is that a matrix element indexed by boundary Fourier frequencies $(k,l)$ depends on the two integers
 \begin{equation}
@@ -126,7 +124,9 @@ which is exactly the Zernike index lattice. Compare for example the diagonalizat
  \kappa(z,w)=\frac1{\pi|1-z\overline w|^2}.
  \label{eq:intro-kernel}
 \end{equation}
-This kernel is not the Bergman projection kernel.  After a unitary change of measure it is instead the squared overlap of normalized Hardy reproducing kernels and is a limiting Berezin convolution.  Berezin transforms and their expression as functions of invariant differential operators have a substantial literature \cite{Berezin1975,UnterbergerUpmeier1994,Englis1995,Stroethoff1997}.  Our contribution is the bridge from linearized Calder\'on measurements to the Hardy-endpoint kernel, together with its inverse-problem interpretation.
+This kernel is not the Bergman projection kernel.  After a unitary change of measure it is instead the the squared modulus of the inner product between normalized Hardy reproducing kernels  and is a limiting Berezin convolution.  Berezin transforms and their expression as functions of invariant differential operators have a substantial literature \cite{Berezin1975,UnterbergerUpmeier1994,Englis1995,Stroethoff1997}.  Our contribution is the bridge from linearized Calder\'on measurements to the Hardy-endpoint kernel, together with its inverse-problem interpretation.
+The multiplicity normalization is the step that reveals this invariant operator.  It is not hidden as an allegedly equivalent form of the usual operator norm: it defines the particular tangent-data Hilbert space being diagonalized.  Section~\ref{sec:nonredundant} compares it explicitly with the raw entrywise matrix norm and with physically noise-weighted data.  In particular, counting each independent datum once cannot increase data energy or the ordered singular values relative to counting every repeated copy in raw $\ell^2$; it removes that repetition gain.
+
 
 The main results may be summarized as follows.
 \begin{enumerate}[label=(\roman*)]
@@ -157,7 +157,9 @@ the concentration of fine radial oscillations near the boundary.
 
 \end{enumerate}
 
-The distinction between multiplicity normalization and physical frequency weighting is important.  The former only removes repeated copies of identical linearized measurements.  A Sobolev, noise-whitening, Dirichlet-to-Neumann, or Neumann-to-Dirichlet weighting may introduce additional factors depending on $k$ and $l$ and therefore changes the normal operator.  The paper treats the equal-weight, non-redundant data space exactly.  
+\begin{revision}
+The distinction between multiplicity normalization and physical frequency weighting is important.  The former assigns one unit of weight to each algebraically independent tangent datum.  A Sobolev, covariance-whitening, Dirichlet-to-Neumann, or Neumann-to-Dirichlet weighting may introduce additional factors depending on $k$ and $l$ and therefore changes the normal operator.  The paper treats the equal-weight, non-redundant tangent data space exactly; it does not claim that this is the unique physical noise norm for an electrode experiment.
+\end{revision}
 %\todo{After checking the original EIT normalization, state explicitly how this data norm relates to the physical DtN and NtD norms.}
 
 \section{Linearization in an $L^2$ potential}
@@ -170,7 +172,7 @@ Let $\D\subset\R^2$ be the unit disk and consider
  \label{eq:schrodinger-pde}
 \end{equation}
 For $q$ close to zero in $L^2(\D)$, write $\Lambda_q:H^{1/2}(\partial\D)\to H^{-1/2}(\partial\D)$ for the Dirichlet-to-Neumann map, with the outward normal convention. 
-We work initially in the Schr\"odinger formulation.  Its relation to
+We work initially in this Schr\"odinger formulation, and hence the terminology describing $q$ as a potential.  Its relation to
 the conductivity equation and to the linearized conductivity
 Dirichlet-to-Neumann map is recorded after Proposition~\ref{prop:linearization}.
 
@@ -241,41 +243,17 @@ for $\norm q_{L^2}$ sufficiently small.
 \end{proposition}
 
 \begin{proof}
-For $u\in H^1(\D)$ and $v\in H_0^1(\D)$, H\"older's
-inequality with exponents $2,4,4$ gives
-\[
-\left|\int_{\D}q\,u\overline v\,\dd A\right|
-\leq
-\norm q_{L^2}\norm u_{L^4}\norm v_{L^4}.
-\]
-The Sobolev embeddings
-\[
-H^1(\D)\hookrightarrow L^4(\D),
-\qquad
-H_0^1(\D)\hookrightarrow L^4(\D)
-\]
-therefore imply
-\[
-\left|\int_{\D}q\,u\overline v\,\dd A\right|
-\leq
-C\norm q_{L^2}
-\norm u_{H^1}
-\norm v_{H_0^1}.
-\]
-Consequently,
-\[
-\norm{M_qu}_{H^{-1}}
-\leq C\norm q_{L^2}\norm u_{H^1}.
-\]	
-	
-	
-%Multiplication by $q$ defines a bounded map $M_q:H^1(\D)\to H^{-1}(\D)$.  Indeed, the two-dimensional embedding $H^1(\D)\hookrightarrow L^4(\D)$ and Cauchy--Schwarz give
+For $u\in H^1(\D)$ and $v\in H_0^1(\D)$, H\"older's inequality with exponents $2,4,4$, followed by the Sobolev embeddings $H^1(\D),H_0^1(\D)\hookrightarrow L^4(\D)$, gives
 \begin{equation}
- \left|\int_{\D}q u\overline v\,\dd A\right|
- \leq \norm q_2\norm u_4\norm v_4
- \leq C\norm q_2\norm u_{H^1}\norm v_{H^1}.
+ \left|\int_{\D}q\,u\overline v\,\dd A\right|
+ \leq \norm q_{L^2}\norm u_{L^4}\norm v_{L^4}
+ \leq C\norm q_{L^2}\norm u_{H^1}\norm v_{H_0^1}.
  \label{eq:multiplication-estimate}
 \end{equation}
+Consequently, multiplication by $q$ defines a bounded map $M_q:H^1(\D)\to H^{-1}(\D)$ and
+\[
+ \norm{M_qu}_{H^{-1}}\leq C\norm q_{L^2}\norm u_{H^1}.
+\]
 Let $G=(-\Delta_D)^{-1}:H^{-1}(\D)\to H_0^1(\D)$.  If $u_f^0$ denotes harmonic extension, the solution is
 \begin{equation}
  u_f^q=(I+GM_q)^{-1}u_f^0.
@@ -425,6 +403,51 @@ When a redundant data matrix is constant on each fibre, the norm
 \end{equation}
 counts every independent datum exactly once.  Equivalently, one may select one representative for each $(m,n)$ or $(p,q)$.
 
+
+\subsection{The topology of the reduced data}
+Let
+\[
+ \Gamma=\{(m,n)\in\Z\times\N_0:n\geq |m|,\ n\equiv m\pmod 2\},
+ \qquad \pi(k,l)=(k-l,|k|+|l|).
+\]
+A consistent linearized Fourier matrix has the form $Y_{kl}=d_{\pi(k,l)}$ for a reduced sequence $d=(d_\gamma)_{\gamma\in\Gamma}$.  The ordinary entrywise matrix norm restricted to this consistency subspace is
+\begin{equation}
+ \norm{Y}_{\mathrm{raw}}^2
+ =\sum_{\gamma\in\Gamma}\nu(\gamma)|d_\gamma|^2,
+ \label{eq:raw-data-norm}
+\end{equation}
+whereas \eqref{eq:sharp-data-norm} gives
+\begin{equation}
+ \norm{Y}_{\sharp}^2
+ =\sum_{\gamma\in\Gamma}|d_\gamma|^2.
+ \label{eq:reduced-data-norm}
+\end{equation}
+Thus the reduced norm is not simply the topology induced by raw matrix $\ell^2$.  It is the equal-weight Hilbert norm on the algebraically independent tangent measurements.  Since $\nu\geq1$,
+\[
+ \norm{Y}_{\sharp}\leq \norm{Y}_{\mathrm{raw}}.
+\]
+On the truncation $|m|\leq M$ the converse estimate
+\[
+ \norm{Y}_{\mathrm{raw}}\leq\sqrt{M+1}\,\norm{Y}_{\sharp}
+\]
+holds, but there is no uniform equivalence as $M\to\infty$ because $\nu(m,|m|)=|m|+1$.
+
+Equivalently, if $R$ replicates a reduced sequence across its fibres, then on every finite truncation the raw measurement map is $R\mathcal M$ and
+\[
+ (R\mathcal M)^*(R\mathcal M)=\mathcal M^*D_\nu\mathcal M\geq\mathcal M^*\mathcal M,
+ \qquad D_\nu=\operatorname{diag}(\nu).
+\]
+By the min--max principle, on every finite truncation the ordered singular values satisfy
+\[
+ s_j(\mathcal M)\leq s_j(R\mathcal M).
+\]
+The severe exponential attenuation is already present in the radial block. In that block the zero moment occurs once, whereas every positive moment occurs twice, so the raw and equal-weight reduced norms are uniformly equivalent,
+\[||d||_{\mbox{red}} \leq ||d||_{\mbox{raw}} \leq \sqrt{2}\,||d||_{\mbox{red}},\]
+although they are not scalar multiples. The corresponding radial normal operators differ, after an overall factor, by the rank-one correction associated with the zero moment. Hence the exponential degree of ill-posedness is not produced by the unbounded multiplicities of the non-radial data.
+
+The norm is also not claimed to be induced by the Banach operator norm on $\mathcal L(H^{1/2},H^{-1/2})$.  An SVD requires a Hilbert data metric, and the choice here is attached to the derivative at the rotationally invariant background $q=0$.  We do not assert that the nonlinear map takes values in this sequence space.  For physical electrode data the statistically appropriate metric depends on the noise covariance: independent repeated measurements retain a multiplicity gain, while exact or perfectly correlated algebraic copies should be counted only once.
+
+
 Define the non-redundant moment map initially on a dense subspace by
 \begin{equation}
  \mathcal{M} f_{p,q}
@@ -503,9 +526,15 @@ Under $t=r^2$ and $s=\rho^2$, the $m$th radial block is unitarily equivalent to
 The case $m=0$ is exactly \eqref{eq:radial-hilbert}.
 
 \begin{remark}[Raw multiplicity]
-If the unreduced matrix is given the ordinary entrywise $\ell^2$ norm, the edge $n=|m|$ is over-counted.  In each angular block the raw normal kernel differs from a constant multiple of \eqref{eq:angular-block-r} by a rank-one term proportional to $r^{|m|}\rho^{|m|}$.  The normalization \eqref{eq:sharp-data-norm} removes precisely these exceptional edge terms. 
-% \todo{Write the exact formula using the final Fourier normalization and decide whether it belongs in the main text or an appendix.}
+With the same block convention as \eqref{eq:angular-block-r}, put $x=r\rho$.  The ordinary entrywise $\ell^2$ norm gives the raw block kernel
+\[
+ k_m^{\mathrm{raw}}(r,\rho)
+ =(|m|+1)x^{|m|}+2\sum_{j=1}^\infty x^{|m|+2j}
+ =\frac{2x^{|m|}}{1-x^2}+(|m|-1)x^{|m|}.
+\]
+Thus the raw block is twice the reduced block plus the rank-one edge term $(|m|-1)r^{|m|}\rho^{|m|}$.  For $m=0$ this is the familiar negative constant correction, for $|m|=1$ the correction vanishes, and for $|m|\geq2$ it is positive.  The normalization \eqref{eq:sharp-data-norm} removes exactly these exceptional edge terms and is the reason the blocks reassemble into the invariant kernel \eqref{eq:block-sum}.
 \end{remark}
+
 
 \section{Exact norm and non-compactness}
 \label{sec:elementary}
@@ -720,7 +749,16 @@ is the squared overlap of normalized Hardy kernels
  \qquad
  |\ip{s_z}{s_w}_{H^2}|^2=\delta(z,w).
 \]
-For $\lambda>1$, the weighted Bergman Berezin transform has invariant kernel proportional to $\delta^\lambda$.  Formula \eqref{eq:hyperbolic-convolution} is the renormalized endpoint $\lambda\downarrow1$.  We shall therefore call it the Hardy-endpoint Berezin convolution.  This terminology distinguishes it from the Bergman projection, which is an idempotent holomorphic projection and has spectrum $\{0,1\}$; the Berezin transform is an averaging operator and is not a projection \cite{Stroethoff1997,Englis1995}.
+For $s>1$, the mass-normalized weighted Berezin transform may be written
+\[
+ (B_sf)(z)=\frac{s-1}{4\pi}\int_{\D}\delta(z,w)^s f(w)\,\dd\mu_H(w).
+\]
+The operator in \eqref{eq:hyperbolic-convolution} is therefore the renormalized endpoint
+\[
+ UKU^{-1}=\lim_{s\downarrow1}\frac{B_s}{s-1}
+\]
+on compactly supported functions, and then by the bounded spectral multiplier on $L^2$.  We use the descriptive term \emph{Hardy-endpoint Berezin convolution}; there does not appear to be a universally adopted name for this endpoint.  This distinguishes it from the Bergman projection, which is an idempotent holomorphic projection with spectrum $\{0,1\}$, whereas a Berezin transform is an averaging operator and is not a projection \cite{Stroethoff1997,Englis1995}.
+
 
 The endpoint kernel
 \[
@@ -733,9 +771,29 @@ is not in $L^1(\mathbb H^2)$: $2\pi h(d)\sinh d\to1$ as $d\to\infty$.  It is in 
 
 \section{Hyperbolic spectral multiplier and operator spectrum}
 \label{sec:spectrum}
-The spectrum of $-\Delta_H$ on the hyperbolic plane is
-$[1/4,\infty)$ and is purely absolutely continuous
-\cite{Helgason1984}.  For $\mu\geq0$, let
+By the Helgason--Fourier Plancherel theorem for the hyperbolic plane
+\cite[Introduction, \S4]{Helgason1984}, the operator $-\Delta_H$ is
+unitarily equivalent\footnote{Helgason uses the disk metric
+	$
+	ds_0^2=\frac{|\dd z|^2}{(1-|z|^2)^2},
+	$
+	which has curvature $-4$.  Our curvature $-1$ convention is
+	$ds_H^2=4ds_0^2$, and hence
+	$
+	\Delta_H=\frac14\Delta_0$
+	$d_H=2d_0.
+	$
+	Thus the spectral threshold $1$ in Helgason's normalization becomes
+	$1/4$ in ours.  Equivalently, his spectral parameter $\lambda$ is
+	related to ours by $\lambda=2\mu$.} to multiplication by
+\[
+\mu^2+\frac14,\qquad \mu\geq0.
+\]
+Consequently,
+\[
+\operatorname{spec}(-\Delta_H)=[1/4,\infty),
+\]
+and the spectrum is purely absolutely continuous.  For $\mu\geq0$, let
 \[
 \phi_\mu(d)
 =
@@ -765,6 +823,7 @@ equivalently the radial part of the Helgason--Fourier transform.
 %\]
 
 \begin{lemma}[Mehler--Fock transform of the endpoint kernel]
+    \label{lem:mehler-fock}
 	For $\mu\geq0$,
 	\begin{equation}
 		\int_1^\infty
@@ -835,7 +894,7 @@ equivalently the radial part of the Helgason--Fourier transform.
 	(1-t)^{a-1}{}_2F_1(a,a;1;t)\,\dd t.
 	\]
 	
-	Termwise integration of the hypergeometric series yields
+	Termwise integration of the hypergeometric series is justified by absolute convergence of the resulting beta series (its terms are $O(n^{-3/2})$), and yields
 	\[
 	\begin{aligned}
 		\int_0^1
@@ -935,7 +994,7 @@ $K$ has purely absolutely continuous spectrum, is injective, and has dense non-c
 \end{theorem}
 
 \begin{proof}
-The radial convolution in Theorem~\ref{thm:hyperbolic-conjugation} is diagonalized by the spherical/Helgason Fourier transform.  Lemma~\ref{lem:spherical-transform} gives the bounded multiplier $\pi\sech(\pi\mu)$, yielding \eqref{eq:exact-spectral-formula}.  The multiplier is continuous, strictly positive for finite $\mu$, decreases from $\pi$ to zero, and the hyperbolic Laplacian has purely absolutely continuous spectrum.  The stated consequences follow from the spectral theorem.
+The radial convolution in Theorem~\ref{thm:hyperbolic-conjugation} is diagonalized by the spherical/Helgason Fourier transform.  Lemma~\ref{lem:mehler-fock} gives the bounded multiplier $\pi\sech(\pi\mu)$, yielding \eqref{eq:exact-spectral-formula}.  The multiplier is continuous, strictly positive for finite $\mu$, decreases from $\pi$ to zero, and the hyperbolic Laplacian has purely absolutely continuous spectrum.  The stated consequences follow from the spectral theorem.
 \end{proof}
 
 \begin{remark}
@@ -994,7 +1053,7 @@ respectively.  The first multiplier is bounded, so it preserves the domain defin
 \section{Generalized singular functions and resolution}
 \label{sec:singular-functions}
 
-Let $x=d_H(0,r)=2\operatorname{artanh}r$, so $r=\tanh(x/2)$.  Separating angular frequency $m\in\Z$, a regular generalized eigenfunction of the hyperbolic Laplacian is
+Let $x=d_H(0,r)=2\operatorname{arctanh}r$, so $r=\tanh(x/2)$.  Separating angular frequency $m\in\Z$, a regular generalized eigenfunction of the hyperbolic Laplacian is
 \begin{align}
  R_{m,\mu}(x)
  &=\tanh(x/2)^{|m|}
@@ -1091,7 +1150,7 @@ Figure~\ref{fig:global-order} shows the characteristic interlacing of angular fr
 \begin{figure}[htbp]
  \centering
  \includegraphics[width=1.0\textwidth]{figures/nonradial_global_singular_values.png}
- \caption{Finite-section global ordering.  The singular values are compared with the analytic multiplier, while the lower panels display the angular frequency and radial-zero count of the correspondingly ordered mode.  The discrete ordering depends on the hyperbolic truncation, but the mixed angular--radial pattern is robust.}
+ \caption{Finite-section global ordering.  The computed singular values $\sigma=\sqrt\lambda$ are compared with the square root of the analytic normal-operator multiplier, while the lower panels display the angular frequency and radial-zero count of the correspondingly ordered mode.  The discrete ordering depends on the hyperbolic truncation, but the mixed angular--radial pattern is robust.}
  \label{fig:global-order}
 \end{figure}
 
@@ -1130,21 +1189,17 @@ resolution near the Euclidean boundary.
 	\centering
 	\includegraphics[width=1.0\linewidth]{figures/nonradial_singular_functions}
 	\caption{
-		Selected finite-section approximations to the generalized right
-		singular functions of the multiplicity-normalized linearized
-		measurement map.  Each mode is labelled by its angular frequency
-		$|m|$, the effective hyperbolic spectral parameter $\mu_\lambda$
-		obtained from
-		$
-		\lambda=\pi/\cosh (\pi \mu_\lambda),
-		$
-		and its radial zero count.  The modes are ordered globally by the
-		computed normal-operator eigenvalue.  The resulting sequence interlaces
-		angular and radial complexity.  The increasing concentration of radial
-		oscillations near $r=1$ is the Euclidean manifestation of approximately
-		uniform oscillation in hyperbolic radius.  For $|m|>0$, a second real
-		mode is obtained by replacing the cosine angular factor by a sine
-		factor.
+        Selected finite-section approximations to the generalized right
+        singular functions of the multiplicity-normalized linearized
+        measurement map.  Each panel is labelled by angular frequency
+        $|m|$, finite-section radial index $j$, radial zero count $z$, and
+        computed singular value $\sigma$.  The modes are ordered globally by
+        the computed normal-operator eigenvalue.  The resulting sequence
+        interlaces angular and radial complexity.  The increasing concentration
+        of radial oscillations near $r=1$ is the Euclidean manifestation of
+        approximately uniform oscillation in hyperbolic radius.  For $|m|>0$,
+        a second real mode is obtained by replacing the cosine angular factor
+        by a sine factor.
 }
 	\label{fig:nonradialsingularfunctions}
 \end{figure}
@@ -1156,7 +1211,9 @@ resolution near the Euclidean boundary.
 \section{Discussion}
 \label{sec:discussion}
 
-The result supplies a global counterpart of the rotationally symmetric calculation.  The one-dimensional Hilbert-kernel operator is the $m=0$ spherical sector of a Hardy-endpoint Berezin convolution on the Poincar\'e disk.  The separate Sturm--Liouville expressions are the angular reductions of one disk differential operator.  This explains why the same multiplier appears through finite Hilbert transforms, Hilbert matrices, scattering theory and hyperbolic harmonic analysis.
+
+The result supplies a global counterpart of the rotationally symmetric calculation.  The one-dimensional Hilbert-kernel operator is the $m=0$ angular block of a Hardy-endpoint Berezin convolution on the Poincar\'e disk.  The separate Sturm--Liouville expressions are the angular reductions of one disk differential operator.  This explains why the same multiplier appears through finite Hilbert transforms, Hilbert matrices, scattering theory and hyperbolic harmonic analysis.
+
 
 The relation with disk Radon transforms is structural rather than literal.  In Radon and geodesic X-ray problems, Zernike or generalized Zernike functions diagonalize distinguished disk operators, and differential intertwining identities yield sharp mapping results \cite{Monard2020,MishraMonard2021,MishraMonardZou2023,EptaminitakisMonardZou2026}.  Here the same Zernike lattice arises from the multiplicities of boundary Fourier measurements, but the normal operator is not an X-ray normal operator and does not localize the unknown along hyperbolic geodesics.  The geometry is hyperbolic while the imaging mechanism is an exponentially smoothing invariant convolution.
 
@@ -1172,7 +1229,11 @@ The abstract diagonalization belongs to established Berezin and symmetric-space 
 \end{equation*}
 This route makes the data norm and the exceptional edge $n=|m|$ visible rather than concealing them in a formal block sum.
 
-Several related questions remain outside the scope of the present paper.  Frequency-weighted Dirichlet to Neumann or Neumann to Dirichlet  data lead to logarithmic, dilogarithmic or shifted-polylogarithmic kernels; for the dilogarithm kernel a third-order adjoint intertwiner is available, but no explicit singular system is presently known.  If the perturbation is known near the boundary, the radial operator becomes compact and a commuting Heun equation appears.  These are separate spectral problems and are not needed for the present full-data result. The three dimensional analogue of the present problem may  fall to the same methods as used in this paper, albeit with a more elaborate redundancy weighting. 
+
+The exact diagonalization is therefore a statement about a specified local experiment: the derivative at the zero potential, with one equal-weight coordinate for each independent Fourier moment.  This choice is not presented as the unique physical norm for EIT.  It is, however, mathematically nontrivial and falsifiable: it removes rather than enhances the raw multiplicity gain, it exposes a global invariant geometry that is hidden by the unreduced matrix norm, and it leaves the exponential attenuation already present in the uniformly equivalent radial subproblem.  These points allow other data norms---including covariance-weighted electrode norms---to be compared objectively with the present baseline.
+
+
+Several related questions remain outside the scope of the present paper.  Frequency-weighted Dirichlet-to-Neumann or Neumann-to-Dirichlet  data lead to logarithmic, dilogarithmic or shifted-polylogarithmic kernels; for the dilogarithm kernel a third-order adjoint intertwiner is available, but no explicit singular system is presently known.  If the perturbation is known near the boundary, the radial operator becomes compact and a commuting Heun equation appears.  These are separate spectral problems and are not needed for the present full-data result. The three-dimensional analogue of the present problem may  fall to the same methods as used in this paper, albeit with a more elaborate redundancy weighting. 
 
 %\section{Checks required before submission}
 %\label{sec:todos}
@@ -1189,18 +1250,14 @@ Several related questions remain outside the scope of the present paper.  Freque
 %\item finalize authorship, CRediT roles, data/code archive and the generative-AI disclosure.
 %\end{enumerate}
 
-\ack{This draft was developed with substantial assistance from ChatGPT (thanks for the access donated by OpenAI), using GPT-5.6 Sol Pro through a ChatGPT Pro subscription, accessed in September 2026.  The assistance included proposing candidate derivations, symbolic and numerical checks, literature-search support and drafting. In partuclar the LLM found the connection to yperbolic geometry and weighted Bergman Berezin transform.  The human author is responsible for checking every argument, computation, citation and originality claim.
+\ack{\rev{This work was developed with substantial assistance from ChatGPT (OpenAI), using GPT-5.6 Sol Pro through a ChatGPT Pro subscription in September 2026; OpenAI provided complimentary access.  The assistance included proposing candidate derivations, symbolic and numerical code, literature-search suggestions, and draft prose.  In particular, the system proposed the hyperbolic/Berezin interpretation.  The author formulated the inverse problem and the multiplicity normalization, derived the normal kernel, selected and developed the final arguments, executed and reviewed the computations, checked the cited identities, and assumes responsibility for all mathematical claims, references and originality statements.
 
-Part of this work was complete while the author was a Visiting Fellow at Clare Hall, Cambridge} 
-	% \todo{Revise this disclosure after the final human verification record and author contributions are complete.}}
+Part of this work was completed while the author was a Visiting Fellow at Clare Hall, Cambridge.}}
+\roles{\rev{William R B Lionheart: conceptualization, methodology, formal analysis, investigation, software, validation, visualization, writing--original draft, and writing--review and editing.}}
+\data{The MATLAB code used for the exploratory finite-section figures is included with the present draft package.  A versioned public repository and a precise computational environment will be supplied with the submitted manuscript. \todo{Add repository DOI or URL and software versions.}}
 
-\roles{William R B Lionheart: conceptualization, methodology, investigation, validation, writing, and supervision. As well as the choice of problem the derivation of the kernel function of the normal operator and the multiplicity weighting was the human author's insight although the LLM was able to reproduce and extend this reasoning with minimal prompting.  }
-	% \todo{Replace by the final CRediT statement if further authors join the paper.}}
-
-\data{The MATLAB code used for the exploratory finite-section figures, along with some Mathematica verifications wiil be released on github on a public repository}}
-
-\bibliographystyle{iopart-num}
-\bibliography{references}
+\bibliographystyle{iopart-num-titles}
+\bibliography{references_reviewed}
 
 \appendix
 \section{A direct polar-coordinate check of the kernel identity}
