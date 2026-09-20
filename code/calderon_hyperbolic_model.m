@@ -39,9 +39,9 @@ N              = 900;    % Gauss-Legendre nodes in hyperbolic radius
 xMax           = 18.0;   % hyperbolic truncation
 mMax           = 10;     % angular blocks |m|=0,...,mMax
 nModesPerBlock = 18;     % leading finite-section modes in each block
-nDisplay       = 32;     % number of disk modes displayed
+nDisplay       = 16;     % number of disk modes displayed
 displayRows    = 4;
-displayCols    = 8;
+displayCols    = 4;
 zeroWindow     = 15.0;   % count radial zeros only on 0<x<zeroWindow
 comparisonJ    = 4;      % radial index for analytic comparisons
 comparisonM    = [0 1 2 4];
@@ -203,8 +203,8 @@ for k = 1:min(nDisplay,numel(allModes))
     imagesc(grid1,grid1,field);
     axis image off xy;
     caxis([-1 1]);
-    title(sprintf('#%d: |m|=%d, j=%d, z=%d, \\sigma=%.3g', ...
-        k,M.m,M.j,M.zeroCount,M.sigma), ...
+    title(sprintf('#%d: |m|=%d, \\sigma=%.3g', ...
+        k,M.m,M.sigma), ...
         'FontSize',8,'Interpreter','tex');
 end
 colormap(fig1,blue_white_red(257));
