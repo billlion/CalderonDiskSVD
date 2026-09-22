@@ -780,6 +780,65 @@ is the squared overlap of normalized Hardy kernels
  \qquad
  |\ip{s_z}{s_w}_{H^2}|^2=\delta(z,w).
 \]
+
+\begin{remark}[The reduced data norm and the Hardy representation]
+	The equal weighting of the non-redundant coordinates has a natural
+	Hilbert-space interpretation. Let $\mathcal H^2(\D)$ denote the Hardy space of holomorphic functions
+	\[
+	f(z)=\sum_{n=0}^{\infty}a_nz^n,
+	\qquad
+	\norm{f}_{\mathcal H^2}^2=\sum_{n=0}^{\infty}|a_n|^2.
+	\]
+	We use the notation $\mathcal H^2$ here to distinguish the Hardy space
+	from the Sobolev space $H^2(\D)$ used in Section~2.
+	
+	
+	 With $e_p(\zeta)=\zeta^p$ denoting the
+	standard orthonormal basis of $\mathcal{H}^2(\D)$, there are canonical
+	identifications
+	\[
+	\ell^2(\N_0^2)
+	\simeq
+	\mathcal{H}^2(\D)\otimes\overline{\mathcal{H}^2(\D)}
+	\simeq
+	\mathcal S_2(\mathcal{H}^2(\D)),
+	\]
+	where $\mathcal S_2$ denotes the Hilbert--Schmidt operators.
+	
+	Under this identification, the doubly indexed vector
+	\[
+	\Psi_z
+	=
+	\bigl((1-|z|^2)\overline z^{\,p}z^q\bigr)_{p,q\geq0}
+	\]
+	corresponds to the rank-one projector
+	\[
+	P_z=|s_z\rangle\langle s_z|.
+	\]
+	Consequently,
+	\[
+	\langle P_z,P_w\rangle_{\mathrm{HS}}
+	=
+	\operatorname{tr}(P_zP_w)
+	=
+	|\langle s_z,s_w\rangle_{\mathcal{H}^2}|^2
+	=
+	\delta(z,w).
+	\]
+	
+	Thus the multiplicity-normalized $\ell^2$ norm is the natural
+	Hilbert--Schmidt norm on the tensor-product data representation.
+	The action of $g\in \operatorname{PSU}(1,1)$ carries $P_z$ to $P_{gz}$,
+	so the corresponding normal operator belongs to the invariant
+	convolution algebra on
+	\[
+	\D\simeq\operatorname{PSU}(1,1)/SO(2).
+	\]
+	This provides a representation-theoretic explanation for why the
+	equal-weight reduction, rather than the raw matrix multiplicity,
+	reveals the full hyperbolic symmetry.
+\end{remark}
+
 For $s>1$, the mass-normalized weighted Berezin transform may be written
 \[
  (B_sf)(z)=\frac{s-1}{4\pi}\int_{\D}\delta(z,w)^s f(w)\,\dd\mu_H(w).
