@@ -99,6 +99,22 @@ The singular value decomposition (SVD) of discretized EIT Jacobians has been use
 
 These computations already showed severe ill-posedness, strongly non-uniform resolution, and weak sensitivity to interior perturbations.  Nevertheless, an explicit analytic singular system for the full angular problem has remained unavailable for roughly four decades.  The contrast with the classical Zernike SVD of the Radon transform on the disk made this absence particularly conspicuous.  A key change of viewpoint came from recognizing that the continuum normal operator is not compact (Proposition~\ref{prop:noncompact}); the appropriate analogue of an SVD is therefore a continuous spectral diagonalization rather than a discrete singular sequence.
 
+A parallel line of work sought to explain the geometry underlying the
+Barber--Brown backprojection method \cite{barber1986recent}.  Santosa and Vogelius interpreted
+that construction in terms of a generalized Radon transform, while
+Berenstein and Casadio Tarabusi subsequently gave an exact
+factorization of the linearized conductivity problem through the
+geodesic X-ray transform on the Poincar\'e disk and an additional
+hyperbolic convolution
+\cite{SantosaVogelius1990,
+	BerensteinCasadio1994,
+	BerensteinCasadio1996}.
+Thus hyperbolic geometry was already known to be intrinsic to the disk
+problem, although the linearized EIT map is not itself a hyperbolic
+X-ray transform.  The additional convolution remained a separate
+inversion problem, and this approach did not provide an explicit
+generalized singular system for the complete boundary measurement map.
+
 
 The radial subproblem---that is, the $m=0$ angular Fourier block corresponding to rotationally invariant perturbations---is particularly transparent.  For rotationally symmetric perturbations, a multiplicity-normalized normal operator reduces to the Hilbert kernel \cite{Lionheart2026AtLast}.
 \begin{equation}
