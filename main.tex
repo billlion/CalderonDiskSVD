@@ -114,7 +114,10 @@ problem, although the linearized EIT map is not itself a hyperbolic
 X-ray transform.  The additional convolution remained a separate
 inversion problem, and this approach did not provide an explicit
 generalized singular system for the complete boundary measurement map.
+The role of this geometry in the
+normal operator considered here is made precise below.
 
+  
 
 The radial subproblem---that is, the $m=0$ angular Fourier block corresponding to rotationally invariant perturbations---is particularly transparent.  For rotationally symmetric perturbations, a multiplicity-normalized normal operator reduces to the Hilbert kernel \cite{Lionheart2026AtLast}.
 \begin{equation}
@@ -143,6 +146,10 @@ which is exactly the Zernike index lattice. Compare for example the diagonalizat
 This kernel is not the Bergman projection kernel.  After a unitary change of measure it is instead the the squared modulus of the inner product between normalized Hardy reproducing kernels  and is a limiting Berezin convolution.  Berezin transforms and their expression as functions of invariant differential operators have a substantial literature \cite{Berezin1975,UnterbergerUpmeier1994,Englis1995,Stroethoff1997}.  Our contribution is the bridge from linearized Calder\'on measurements to the Hardy-endpoint kernel, together with its inverse-problem interpretation.
 The multiplicity normalization is the step that reveals this invariant operator.  It is not hidden as an allegedly equivalent form of the usual operator norm: it defines the particular tangent-data Hilbert space being diagonalized.  Section~\ref{sec:nonredundant} compares it explicitly with the raw entrywise matrix norm and with physically noise-weighted data.  In particular, counting each independent datum once cannot increase data energy or the ordered singular values relative to counting every repeated copy in raw $\ell^2$; it removes that repetition gain.
 
+Unlike the earlier X-ray factorization, the hyperbolic structure found
+here arises directly in the normal operator of the symmetry-reduced
+Fourier measurement map.
+
 
 The main results may be summarized as follows.
 \begin{enumerate}[label=(\roman*)]
@@ -158,13 +165,25 @@ and kernel \eqref{eq:intro-kernel}.
  \mathcal P_z\kappa(z,w)=\mathcal P_w\kappa(z,w),
 \]
 not merely after separation into angular modes.
-\item Under a unitary multiplication operator $U$, the auxiliary expression $\mathcal L=\mathcal P-\frac12\partial_\theta^2-1$ becomes the Poincar\'e Laplacian and $UKU^{-1}$ becomes a radial hyperbolic convolution.
+\item The hyperbolic geometry enters the present construction at the
+level of the normal operator.  Under a unitary multiplication operator
+$U$, the auxiliary expression
+\[
+\mathcal L=\mathcal P-\frac12\partial_\theta^2-1
+\]
+is transformed into the curvature $-1$ Poincar\'e Laplacian, while
+$UKU^{-1}$ is an isometry-invariant radial convolution on the
+hyperbolic disk.
 \item The exact normal-operator multiplier is
 \[
 \lambda(\mu)=\frac{\pi}{\cosh(\pi\mu)},
 \]
 so that the spectrum is continuous and high hyperbolic frequencies
 are exponentially attenuated.
+
+
+
+
 \item The generalized eigenfunctions of $K$, and hence the generalized
 right singular functions of $\mathcal M$, are given explicitly by
 associated Legendre or hypergeometric functions.  Their Liouville
