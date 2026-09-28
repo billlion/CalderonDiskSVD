@@ -143,7 +143,7 @@ which is exactly the Zernike index lattice. Compare for example the diagonalizat
  \kappa(z,w)=\frac1{\pi|1-z\overline w|^2}.
  \label{eq:intro-kernel}
 \end{equation}
-This kernel is not the Bergman projection kernel.  After a unitary change of measure it is instead the the squared modulus of the inner product between normalized Hardy reproducing kernels  and is a limiting Berezin convolution.  Berezin transforms and their expression as functions of invariant differential operators have a substantial literature \cite{Berezin1975,UnterbergerUpmeier1994,Englis1995,Stroethoff1997}.  Our contribution is the bridge from linearized Calder\'on measurements to the Hardy-endpoint kernel, together with its inverse-problem interpretation.
+This kernel is not the Bergman projection kernel.   After a unitary change of measure it is instead the the squared modulus of the inner product between normalized Hardy reproducing kernels  and is a limiting Berezin convolution ( see Sec 7.1).  Berezin transforms and their expression as functions of invariant differential operators have a substantial literature \cite{Berezin1975,UnterbergerUpmeier1994,Englis1995,Stroethoff1997}.  Our contribution is the bridge from linearized Calder\'on measurements to the Hardy-endpoint kernel, together with its inverse-problem interpretation.
 The multiplicity normalization is the step that reveals this invariant operator.  It is not hidden as an allegedly equivalent form of the usual operator norm: it defines the particular tangent-data Hilbert space being diagonalized.  Section~\ref{sec:nonredundant} compares it explicitly with the raw entrywise matrix norm and with physically noise-weighted data.  In particular, counting each independent datum once cannot increase data energy or the ordered singular values relative to counting every repeated copy in raw $\ell^2$; it removes that repetition gain.
 
 Unlike the earlier X-ray factorization, the hyperbolic structure found
@@ -697,10 +697,10 @@ A direct expansion gives
 \end{equation}
 Introduce
 \begin{equation}
- \delta(z,w)=\frac{\omega(z)\omega(w)}{|1-z\overline w|^2}.
+ \delta(z,w)=\frac{\omega(z)\omega(w)}{|1-z\overline w|^2},
  \label{eq:delta}
 \end{equation}
-For the Poincar\'e metric introduced in Section~\ref{sec:hyperbolic}, $\delta(z,w)=\sech^2(d_H(z,w)/2)$.  If $F(d)=\sech^2(d/2)$, then
+not to be confused with the Dirac $\delta$-function. For the Poincar\'e metric introduced in Section~\ref{sec:hyperbolic}, $\delta(z,w)=\sech^2(d_H(z,w)/2)$.  If $F(d)=\sech^2(d/2)$, then
 \begin{equation}
  F''(d)+\coth(d)F'(d)=-F(d)^2.
  \label{eq:radial-delta-identity}
@@ -744,23 +744,45 @@ Define
  \label{eq:U}
 \end{equation}
 This map is unitary.
-
-\begin{theorem}[Hyperbolic conjugation]
-\label{thm:hyperbolic-conjugation}
-Let $\mathsf L$ be the self-adjoint realization of \eqref{eq:L-euclidean} defined by
-\begin{equation}
- \mathsf L=U^{-1}\Delta_HU.
- \label{eq:L-operator}
-\end{equation}
-Then
-\begin{equation}
- (UKU^{-1}g)(z)
- =\frac1{4\pi}\int_{\D}
- \sech^2\!\left(\frac{d_H(z,w)}2\right)
- g(w)\,\dd\mu_H(w).
- \label{eq:hyperbolic-convolution}
-\end{equation}
-Thus $UKU^{-1}$ is an isometry-invariant radial convolution on the hyperbolic plane.
+\begin{theorem}[Simultaneous hyperbolic conjugation]
+	\label{thm:hyperbolic-conjugation}
+	Let
+	\[
+	\omega(z)=1-|z|^2,
+	\qquad
+	(Uf)(z)=\frac{\omega(z)}2f(z),
+	\]
+	and let $\mathcal L$ denote the differential expression
+	\eqref{eq:L-euclidean}.  Then
+	\begin{equation}
+		U\mathcal L f=\Delta_HUf,
+		\qquad f\in C_c^\infty(\D).
+		\label{eq:L-conjugation-core}
+	\end{equation}
+	Consequently,
+	\begin{equation}
+		\mathsf L=U^{-1}\Delta_HU,
+		\qquad
+		\operatorname{Dom}(\mathsf L)
+		=
+		U^{-1}\operatorname{Dom}(\Delta_H),
+		\label{eq:L-operator}
+	\end{equation}
+	defines a self-adjoint realization of $\mathcal L$ on
+	$L^2(\D,\dd A)$.
+	
+	Moreover,
+	\begin{equation}
+		(UKU^{-1}g)(z)
+		=
+		\frac1{4\pi}\int_{\D}
+		\sech^2\!\left(\frac{d_H(z,w)}2\right)
+		g(w)\,\dd\mu_H(w).
+		\label{eq:hyperbolic-convolution}
+	\end{equation}
+	Thus $U$ simultaneously conjugates $\mathsf L$ to the Poincar\'e
+	Laplacian and $K$ to an isometry-invariant radial convolution on the
+	hyperbolic plane.
 \end{theorem}
 
 \begin{proof}
@@ -850,7 +872,7 @@ is the squared overlap of normalized Hardy kernels
 
 We briefly explain the Berezin terminology used below.  No result from
 `Berezin quantization' is required for the diagonalization: the spectral
-multiplier will be calculated directly in Section~\ref{sec:spectrum}. The purpose of this subsection is to show the relationship of our operator $K$ to a large body of literature. We recommend \cite{stroethoff1997berezin} for background on reproducing kernels, normalized kernel functions and the Berezin transform on classical analytic function spaces. For the specific connection to the invariant Laplacian see \cite{Englis1995}. 
+multiplier will be calculated directly in Section~\ref{sec:spectrum}. The purpose of this subsection is to show the relationship of our operator $K$ to a large body of literature. We recommend \cite{Stroethoff1997} for background on reproducing kernels, normalized kernel functions and the Berezin transform on classical analytic function spaces. For the specific connection to the invariant Laplacian see \cite{Englis1995}. 
 
 Let $\mathcal H^2(\D)$ denote the Hardy space of holomorphic functions
 \[
