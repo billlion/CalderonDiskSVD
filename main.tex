@@ -503,7 +503,7 @@ The normalization in \eqref{eq:M} is chosen to make the later kernel and norm fo
 
 \section{The normal operator}
 \label{sec:normal}
-
+In this section we show that the non redundant data norm has produced a simple for for the kernel of the normal operator.
 \begin{proposition}[Explicit form of normal-operator]
 \label{prop:normal-factorization}
 The map $\mathcal{M} $ extends to a bounded operator
@@ -573,7 +573,7 @@ Thus the raw block is twice the reduced block plus the rank-one edge term $(|m|-
 \section{Exact norm and non-compactness}
 \label{sec:elementary}
 
-The following arguments establish the operator before any spectral diagonalization is used.
+The following simple arguments establish the operator is bounded and non-compact before any spectral diagonalization is used.
 
 \begin{proposition}[Weighted Schur test]
 \label{prop:norm}
@@ -649,6 +649,8 @@ Thus $\norm{KF_a}=\pi/\sqrt3$ for every $a$.  A compact operator maps a bounded 
 \section{A global differential commutator}
 \label{sec:commutator}
 
+In \cite{Lionheart2026AtLast} we have a commuting differential operator for the radial case. In this section we extend that result to find a commuting partial differential operator for the general case. 
+
 Set $t=r^2$.  The angular blocks \eqref{eq:block-t} suggest the differential expression
 \begin{equation}
  \mathcal P
@@ -663,7 +665,7 @@ In $(r,\theta)$ variables,
  +\left(r^2+\frac1{r^2}\right)\partial_\theta^2+4r^2.
  \label{eq:P-r}
 \end{equation}
-This expression is formally self-adjoint with respect to Euclidean area $r\,\dd r\,\dd\theta$.
+This expression is formally self-adjoint with respect to Euclidean area $r\dd r\dd\theta$.
 
 \begin{proposition}[Direct kernel identity]
 \label{prop:kernel-commutator}
@@ -715,6 +717,7 @@ The kernel depends on the angular variables only through $\theta-\phi$, so $\par
 
 
 Equation \eqref{eq:core-commutation} alone does not specify a self-adjoint realization of the unbounded differential expression.  The canonical domain and full operator commutation will follow from the hyperbolic realization.
+
 
 \section{Hyperbolic and Berezin realization}
 \label{sec:hyperbolic}
@@ -841,15 +844,109 @@ is the squared overlap of normalized Hardy kernels
 	reveals the full hyperbolic symmetry.
 \end{remark}
 
-For $s>1$, the mass-normalized weighted Berezin transform may be written
+%%try this
+
+\subsection{Relation with Hardy and weighted Bergman Berezin transforms}
+
+We briefly explain the Berezin terminology used below.  No result from
+Berezin quantization is required for the diagonalization: the spectral
+multiplier will be calculated directly in Section~\ref{sec:spectrum}. The purpose of this section is to show the relationship of our operator $K$ to a large body of literature. We recommend \cite{stroethoff1997berezin} for background on reproducing kernels, normalized kernel functions and the Berezin transform on classical analytic function spaces. 
+
+Let $\mathcal H^2(\D)$ denote the Hardy space of holomorphic functions
 \[
- (B_sf)(z)=\frac{s-1}{4\pi}\int_{\D}\delta(z,w)^s f(w)\,\dd\mu_H(w).
+f(\zeta)=\sum_{n=0}^\infty a_n\zeta^n,
+\qquad
+\norm{f}_{\mathcal H^2}^2
+=
+\sum_{n=0}^\infty |a_n|^2.
 \]
-The operator in \eqref{eq:hyperbolic-convolution} is therefore the renormalized endpoint
+We use the calligraphic notation $\mathcal H^2$ to distinguish the
+Hardy space from the Sobolev space $H^2(\D)$ used in Section~2.
+
+The reproducing kernel of $\mathcal H^2(\D)$ at $z$ is
 \[
- UKU^{-1}=\lim_{s\downarrow1}\frac{B_s}{s-1}
+k_z(\zeta)=\frac1{1-\overline z\zeta},
+\qquad
+\norm{k_z}_{\mathcal H^2}^2
+=
+\frac1{1-|z|^2}.
 \]
-on compactly supported functions, and then by the bounded spectral multiplier on $L^2$.  We use the descriptive term \emph{Hardy-endpoint Berezin convolution}; there does not appear to be a universally adopted name for this endpoint.  This distinguishes it from the Bergman projection, which is an idempotent holomorphic projection with spectrum $\{0,1\}$, whereas a Berezin transform is an averaging operator and is not a projection \cite{Stroethoff1997,Englis1995}.
+Its normalized form is therefore
+\[
+s_z(\zeta)
+=
+\frac{\sqrt{1-|z|^2}}{1-\overline z\zeta}.
+\]
+A direct calculation gives
+\begin{equation}
+	\left|
+	\ip{s_z}{s_w}_{\mathcal H^2}
+	\right|^2
+	=
+	\frac{(1-|z|^2)(1-|w|^2)}
+	{|1-z\overline w|^2}
+	=
+	\delta(z,w).
+	\label{eq:hardy-overlap}
+\end{equation}
+Thus the invariant kernel in Theorem~\ref{thm:hyperbolic-conjugation}
+is the squared modulus of the inner product between two normalized
+Hardy reproducing kernels.
+
+There is a standard one-parameter family containing this kernel.  For
+$\lambda>1$, let $\mathcal A_\lambda^2(\D)$ be the weighted Bergman
+space with measure
+\[
+\dd\nu_\lambda(w)
+=
+\frac{\lambda-1}{\pi}
+(1-|w|^2)^{\lambda-2}\,\dd A(w).
+\]
+Its reproducing kernel is
+\[
+K_\lambda(z,w)
+=
+\frac1{(1-z\overline w)^\lambda}.
+\]
+The normalized reproducing kernels satisfy
+\[
+\left|
+\ip{s_z^{(\lambda)}}{s_w^{(\lambda)}}
+\right|^2
+=
+\delta(z,w)^\lambda.
+\]
+
+The associated weighted Berezin transform is the integral operator
+\begin{equation}
+	(B_\lambda f)(z)
+	=
+	\frac{\lambda-1}{4\pi}
+	\int_{\D}
+	\delta(z,w)^\lambda f(w)\,\dd\mu_H(w),
+	\qquad \lambda>1.
+	\label{eq:weighted-berezin}
+\end{equation}
+The coefficient $\lambda-1$ is the normalization for which
+$B_\lambda 1=1$.
+
+At $\lambda=1$, the reproducing kernel
+$(1-z\overline w)^{-1}$ is the Hardy, or Szeg\H{o}, kernel rather than
+a weighted-area Bergman kernel.  The normalizing factor in
+\eqref{eq:weighted-berezin} tends to zero, while the unnormalized
+kernel has the finite limit $\delta(z,w)$.  Consequently, on compactly
+supported functions,
+\begin{equation}
+	UKU^{-1}
+	=
+	\lim_{\lambda\downarrow1}
+	\frac{B_\lambda}{\lambda-1}.
+	\label{eq:berezin-endpoint}
+\end{equation}
+For this reason we refer to $UKU^{-1}$ descriptively as the
+renormalized Hardy-endpoint Berezin convolution.  We do not claim that
+this terminology is universal.
+%then edit the next bit
 
 
 The endpoint kernel
