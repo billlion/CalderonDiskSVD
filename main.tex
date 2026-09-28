@@ -785,16 +785,82 @@ This map is unitary.
 	hyperbolic plane.
 \end{theorem}
 
+%new proof
 \begin{proof}
-The first assertion is \eqref{eq:L-euclidean} and the definitions of $U$ and $\Delta_H$.  The hyperbolic distance satisfies
-\begin{equation}
- \cosh^2\!\left(\frac{d_H(z,w)}2\right)
- =\frac{|1-z\overline w|^2}
- {(1-|z|^2)(1-|w|^2)}.
- \label{eq:distance-identity}
-\end{equation}
-Substitution of \eqref{eq:U} and \eqref{eq:distance-identity} into \eqref{eq:K-definition} gives \eqref{eq:hyperbolic-convolution}.
+	By \eqref{eq:L-euclidean},
+	\[
+	\mathcal Lf
+	=
+	\frac{\omega}{4}\Delta_E(\omega f).
+	\]
+	Since $Uf=\omega f/2$ and
+	\[
+	\Delta_H=\frac{\omega^2}{4}\Delta_E,
+	\]
+	we obtain, for $f\in C_c^\infty(\D)$,
+	\[
+	\begin{aligned}
+		U\mathcal Lf
+		&=
+		\frac{\omega}{2}
+		\left[
+		\frac{\omega}{4}\Delta_E(\omega f)
+		\right] \\
+		&=
+		\frac{\omega^2}{8}\Delta_E(\omega f)\\
+		&=
+		\frac{\omega^2}{4}
+		\Delta_E\left(\frac{\omega f}{2}\right)\\
+		&=
+		\Delta_HUf.
+	\end{aligned}
+	\]
+	This proves \eqref{eq:L-conjugation-core}.  Transporting the
+	self-adjoint hyperbolic Laplacian through the unitary map $U$ gives
+	the realization \eqref{eq:L-operator}.
+	
+	For the integral operator, $U^{-1}g=2g/\omega$, and
+	\[
+	\dd A(w)=\frac{\omega(w)^2}{4}\,\dd\mu_H(w).
+	\]
+	Consequently,
+	\[
+	\begin{aligned}
+		(UKU^{-1}g)(z)
+		&=
+		\frac{\omega(z)}2
+		\frac1\pi
+		\int_{\D}
+		\frac{2g(w)}
+		{\omega(w)|1-z\overline w|^2}\,\dd A(w)\\
+		&=
+		\frac1{4\pi}
+		\int_{\D}
+		\frac{\omega(z)\omega(w)}
+		{|1-z\overline w|^2}
+		g(w)\,\dd\mu_H(w).
+	\end{aligned}
+	\]
+	The hyperbolic distance identity
+	\[
+	\frac{\omega(z)\omega(w)}
+	{|1-z\overline w|^2}
+	=
+	\sech^2\!\left(\frac{d_H(z,w)}2\right)
+	\]
+	then gives \eqref{eq:hyperbolic-convolution}.
 \end{proof}
+%end new proof
+%\begin{proof}
+%The first assertion is \eqref{eq:L-euclidean} and the definitions of $U$ and $\Delta_H$.  The hyperbolic distance satisfies
+%\begin{equation}
+% \cosh^2\!\left(\frac{d_H(z,w)}2\right)
+% =\frac{|1-z\overline w|^2}
+% {(1-|z|^2)(1-|w|^2)}.
+% \label{eq:distance-identity}
+%\end{equation}
+%Substitution of \eqref{eq:U} and \eqref{eq:distance-identity} into \eqref{eq:K-definition} gives \eqref{eq:hyperbolic-convolution}.
+%\end{proof}
 
 The invariant factor
 \begin{equation}
