@@ -1020,16 +1020,6 @@ We briefly explain the Berezin terminology used below.  No result from
 `Berezin quantization' is required for the diagonalization: the spectral
 multiplier will be calculated directly in Section~\ref{sec:spectrum}. The purpose of this subsection is to show the relationship of our operator $K$ to a large body of literature. We recommend \cite{Stroethoff1997} for background on reproducing kernels, normalized kernel functions and the Berezin transform on classical analytic function spaces. For the specific connection to the invariant Laplacian see \cite{Englis1995}. 
 
-Let $\mathcal H^2(\D)$ denote the Hardy space of holomorphic functions
-\[
-f(\zeta)=\sum_{n=0}^\infty a_n\zeta^n,
-\qquad
-\norm{f}_{\mathcal H^2}^2
-=
-\sum_{n=0}^\infty |a_n|^2.
-\]
-We use the calligraphic notation $\mathcal H^2$ to distinguish the
-Hardy space from the Sobolev space $H^2(\D)$ used in Section~2.
 
 The reproducing kernel of $\mathcal H^2(\D)$ at $z$ is
 \[
@@ -1061,44 +1051,88 @@ Thus the invariant kernel in Theorem~\ref{thm:hyperbolic-conjugation}
 is the squared modulus of the inner product between two normalized
 Hardy reproducing kernels.
 
-There is a standard one-parameter family containing this kernel.  For
-$\lambda>1$, let $\mathcal A_\lambda^2(\D)$ be the weighted Bergman
-space with measure
+
+There is a standard one-parameter family containing this kernel.
+For $s>1$, let $\mathcal A_s^2(\D)$ be the weighted Bergman space
+with measure
 \[
-\dd\nu_\lambda(w)
+\dd\nu_s(w)
 =
-\frac{\lambda-1}{\pi}
-(1-|w|^2)^{\lambda-2}\,\dd A(w).
+\frac{s-1}{\pi}(1-|w|^2)^{s-2}\,\dd A(w).
 \]
-Its reproducing kernel is
+The reproducing-kernel function at $z$ is
 \[
-K_\lambda(z,w)
+k_z^{(s)}(\zeta)
 =
-\frac1{(1-z\overline w)^\lambda}.
+\frac1{(1-\overline z\zeta)^s},
 \]
-The normalized reproducing kernels satisfy
+and its normalized form is
+\[
+\widehat k_z^{(s)}(\zeta)
+=
+\frac{(1-|z|^2)^{s/2}}
+{(1-\overline z\zeta)^s}.
+\]
+Hence
 \[
 \left|
-\ip{s_z^{(\lambda)}}{s_w^{(\lambda)}}
+\left\langle
+\widehat k_z^{(s)},\widehat k_w^{(s)}
+\right\rangle_{\mathcal A_s^2}
 \right|^2
 =
-\delta(z,w)^\lambda.
+\delta(z,w)^s.
 \]
+**************************************
+
+
+There is a standard one-parameter family containing this kernel.
+For $s>1$, let $\mathcal A_s^2(\D)$ be the weighted Bergman space
+with measure
+\[
+\dd\nu_s(w)
+=
+\frac{s-1}{\pi}(1-|w|^2)^{s-2}\,\dd A(w).
+\]
+The reproducing-kernel function at $z$ is
+\[
+k_z^{(s)}(\zeta)
+=
+\frac1{(1-\overline z\zeta)^s},
+\]
+and its normalized form is
+\[
+\widehat k_z^{(s)}(\zeta)
+=
+\frac{(1-|z|^2)^{s/2}}
+{(1-\overline z\zeta)^s}.
+\]
+Hence
+\[
+\left|
+\left\langle
+\widehat k_z^{(s)},\widehat k_w^{(s)}
+\right\rangle_{\mathcal A_s^2}
+\right|^2
+=
+\delta(z,w)^s.
+\]
+
+
 
 The associated weighted Berezin transform is the integral operator
 \begin{equation}
-	(B_\lambda f)(z)
-	=
-	\frac{\lambda-1}{4\pi}
-	\int_{\D}
-	\delta(z,w)^\lambda f(w)\,\dd\mu_H(w),
-	\qquad \lambda>1.
+(B_sf)(z)
+=
+\frac{s-1}{4\pi}
+\int_{\D}\delta(z,w)^s f(w)\,\dd\mu_H(w),
+\qquad s>1.
 	\label{eq:weighted-berezin}
 \end{equation}
-The coefficient $\lambda-1$ is the normalization for which
-$B_\lambda 1=1$.
+The coefficient $a-1$ is the normalization for which
+$B_s 1=1$.
 
-At $\lambda=1$, the reproducing kernel
+At $s=1$, the reproducing kernel
 $(1-z\overline w)^{-1}$ is the Hardy, or Szeg\H{o}, kernel rather than
 a weighted-area Bergman kernel.  The normalizing factor in
 \eqref{eq:weighted-berezin} tends to zero, while the unnormalized
@@ -1107,8 +1141,8 @@ supported functions,
 \begin{equation}
 	UKU^{-1}
 	=
-	\lim_{\lambda\downarrow1}
-	\frac{B_\lambda}{\lambda-1}.
+	\lim_{s\downarrow1}
+	\frac{B_s}{s-1}.
 	\label{eq:berezin-endpoint}
 \end{equation}
 For this reason we refer to $UKU^{-1}$ descriptively as the
