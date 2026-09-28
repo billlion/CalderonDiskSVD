@@ -95,7 +95,7 @@ Calder\'on introduced the inverse boundary problem that now bears his name in th
 
 
  
-The singular value decomposition (SVD) of discretized EIT Jacobians has been used to study ill-posedness and non-uniform resolution since the mid-1980s.  Murai and Kagawa \cite{murai1985electrical} computed a numerical SVD for a resistor-mesh/finite-element model.  Breckon and Pidcock \cite{breckon1988some} used singular values from a finite-element model to assess the relative importance of drive-pair separation, and Connolly and Wall \cite{connolly1988inverse} published numerical singular values for a rotationally symmetric problem.  Numerical singular functions for the disk were presented by the author at the Third European Workshop on EIT in Copenhagen in 1990 and in the author's doctoral thesis, submitted under the name W. R. Breckon \cite{breckon1990image}.
+The singular value decomposition (SVD) of discretized EIT Jacobians has been used to study ill-posedness and non-uniform resolution since the mid-1980s.  Murai and Kagawa \cite{murai1985electrical} computed a numerical SVD for a resistor-mesh/finite-element model.  Breckon and Pidcock \cite{breckon1988some} used singular values from a finite-element model to assess the relative importance of drive-pair separation, and Connolly and Wall \cite{connolly1988inverse} published numerical singular values for a rotationally symmetric problem.  Numerical singular functions for the disk were presented by the author at the Third European Workshop on EIT in Copenhagen in 1990 and in the author's doctoral thesis, submitted under the name W. R. Breckon \cite{breckon1990image}, see also \cite{adler2021,Lionheart2026AtLast}.
 
 These computations already showed severe ill-posedness, strongly non-uniform resolution, and weak sensitivity to interior perturbations.  Nevertheless, an explicit analytic singular system for the full angular problem has remained unavailable for roughly four decades.  The contrast with the classical Zernike SVD of the Radon transform on the disk made this absence particularly conspicuous.  A key change of viewpoint came from recognizing that the continuum normal operator is not compact (Proposition~\ref{prop:noncompact}); the appropriate analogue of an SVD is therefore a continuous spectral diagonalization rather than a discrete singular sequence.
 
@@ -119,7 +119,7 @@ normal operator considered here is made precise below.
 
  Recent work of Garde, Hyv\"onen and collaborators \cite{garde2024linearized, autio2025linearization}    represents the linearized forward map in a Fourier–Zernike basis, in which it decomposes into triangular systems indexed by angular frequency. Our approach is complementary: rather than triangularizing the forward map in a polynomial basis, we diagonalize the rotationally symmetric normal operator using a continuous family of generalized hypergeometric eigenfunctions.
 
-The radial subproblem---that is, the $m=0$ angular Fourier block corresponding to rotationally invariant perturbations---is particularly transparent.  For rotationally symmetric perturbations, a multiplicity-normalized normal operator reduces to the Hilbert kernel \cite{Lionheart2026AtLast}.
+The radial subproblem---that is, the $m=0$ angular Fourier block corresponding to rotationally invariant perturbations---is particularly transparent.  For rotationally symmetric perturbations, a multiplicity-normalized normal operator reduces to the Hilbert kernel \cite{Lionheart2026AtLast}
 \begin{equation}
  (Hf)(t)=\int_0^1\frac{f(s)}{1-st}\,\dd s.
  \label{eq:radial-hilbert}
@@ -975,7 +975,7 @@ A direct calculation gives
 	{|1-z\overline w|^2}
 	=
 	\delta(z,w).
-	\label{eq:hardy-overlap}
+	\label{eq:hardy-overlap1}
 \end{equation}
 Thus the invariant kernel in Theorem~\ref{thm:hyperbolic-conjugation}
 is the squared modulus of the inner product between two normalized
