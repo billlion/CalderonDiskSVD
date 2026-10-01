@@ -780,18 +780,75 @@ Introduce
  \delta(z,w)=\frac{\omega(z)\omega(w)}{|1-z\overline w|^2},
  \label{eq:delta}
 \end{equation}
-not to be confused with the Dirac $\delta$-function. For the Poincar\'e metric introduced in Section~\ref{sec:hyperbolic}, $\delta(z,w)=\sech^2(d_H(z,w)/2)$.  If $F(d)=\sech^2(d/2)$, then
+not to be confused with the Dirac $\delta$-function. For the Poincar\'e metric introduced in Section~\ref{sec:hyperbolic}, $\delta(z,w)=\sech^2(d_H(z,w)/2)$.  
+%%%
+For fixed $w$, the function $\delta(z,w)$ is radial about $w$ in the
+hyperbolic metric:
 \begin{equation}
- F''(d)+\coth(d)F'(d)=-F(d)^2.
- \label{eq:radial-delta-identity}
+\delta(z,w)=F(d_H(z,w)),
+\qquad
+F(d)=\sech^2(d/2).
 \end{equation}
-Hence $\Delta_{H,z}\delta=-\delta^2=\Delta_{H,w}\delta$.  Using \eqref{eq:L-euclidean}, this gives
+In geodesic polar coordinates centred at $w$,
 \begin{equation}
- \mathcal L_z\kappa(z,w)
- =-\frac{\omega(z)\omega(w)}{\pi|1-z\overline w|^4}
- =\mathcal L_w\kappa(z,w).
- \label{eq:L-kernel}
+\Delta_{H,z}F(d)=F''(d)+\coth(d)F'(d).
 \end{equation}
+Now
+\begin{equation}
+F'=-F\tanh(d/2),
+\qquad
+F''=F-\frac32F^2,
+\end{equation}
+and
+\begin{equation}
+\coth(d)F'
+=
+-F+\frac12F^2.
+\end{equation}
+Consequently,
+\begin{equation}
+F''+\coth(d)F'=-F^2.
+\end{equation}
+The same radial calculation, now in geodesic polar coordinates centred
+at $z$, gives
+\begin{equation}
+\Delta_{H,z}\delta
+=
+-\delta^2
+=
+\Delta_{H,w}\delta.
+\end{equation}
+This equality is not a consequence merely of the symmetry
+$\delta(z,w)=\delta(w,z)$; it follows because $\delta$ is the same
+function of hyperbolic distance in either variable.
+
+Since
+\begin{equation}
+\delta=\pi\omega(z)\omega(w)\kappa,
+\end{equation}
+we have
+\begin{equation}
+\begin{aligned}
+	\mathcal L_z\kappa
+	&=
+	\frac{\omega(z)}4
+	\Delta_{E,z}\bigl(\omega(z)\kappa\bigr)\\
+	&=
+	\frac{1}{\pi\omega(z)\omega(w)}
+	\Delta_{H,z}\delta\\
+	&=
+	-\frac{\omega(z)\omega(w)}
+	{\pi|1-z\overline w|^4}.
+\end{aligned}
+\end{equation}
+The same computation in the $w$ variable gives the identical
+expression, and hence
+\begin{equation}
+\mathcal L_z\kappa=\mathcal L_w\kappa.
+\end{equation}
+
+%%%
+
 The kernel depends on the angular variables only through $\theta-\phi$, so $\partial_\theta^2\kappa=\partial_\phi^2\kappa$.  Equations \eqref{eq:L-def} and \eqref{eq:L-kernel} prove \eqref{eq:kernel-commutator}.  For compactly supported $f$, formal self-adjointness and integration by parts have no boundary contribution, giving \eqref{eq:core-commutation}.
 \end{proof}
 
