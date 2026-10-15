@@ -145,7 +145,7 @@ which is exactly the Zernike index lattice. Compare for example the diagonalizat
  \label{eq:intro-kernel}
 \end{equation}
 %This kernel is not the Bergman projection kernel.   
-After a unitary change of measure it is instead the the squared modulus of the inner product between normalized Hardy reproducing kernels  and is a limiting Berezin convolution ( see Sec \ref{sec:berezin}).  Berezin transforms and their expression as functions of invariant differential operators have a substantial literature \cite{Berezin1975,UnterbergerUpmeier1994,Englis1995,Stroethoff1997}.  Our contribution is the bridge from linearized Calder\'on measurements to the Hardy-endpoint kernel, together with its inverse-problem interpretation.
+After a unitary change of measure it is instead the squared modulus of the inner product between normalized Hardy reproducing kernels  and is a limiting Berezin convolution ( see Sec \ref{sec:berezin}).  Berezin transforms and their expression as functions of invariant differential operators have a substantial literature \cite{Berezin1975,UnterbergerUpmeier1994,Englis1995,Stroethoff1997}.  Our contribution is the bridge from linearized Calder\'on measurements to the Hardy-endpoint kernel, together with its inverse-problem interpretation.
 The multiplicity normalization is the step that reveals this invariant operator.  It is not hidden as an allegedly equivalent form of the usual operator norm: it defines the particular tangent-data Hilbert space being diagonalized.  Section~\ref{sec:nonredundant} compares it explicitly with the raw entrywise matrix norm and with physically noise-weighted data.  In particular, counting each independent datum once cannot increase data energy or the ordered singular values relative to counting every repeated copy in raw $\ell^2$; it removes that repetition gain.
 
 Unlike the earlier X-ray factorization, the hyperbolic structure found
@@ -195,7 +195,7 @@ the concentration of fine radial oscillations near the boundary.
 \end{enumerate}
 
 
-The distinction between multiplicity normalization and physical frequency weighting is important.  The former assigns one unit of weight to each algebraically independent tangent datum.  A Sobolev, covariance-whitening, Dirichlet-to-Neumann, or Neumann-to-Dirichlet weighting may introduce additional factors depending on $k$ and $l$ and therefore changes the normal operator.  The paper treats the equal-weight, non-redundant tangent data space exactly; we do not claim that this is the unique physical noise norm for an electrode based experiment.
+The distinction between multiplicity normalization and physical frequency weighting is important.  The former assigns one unit of weight to each algebraically independent tangent datum.  A Sobolev, covariance-whitening, Dirichlet-to-Neumann, or Neumann-to-Dirichlet weighting may introduce additional factors depending on $k$ and $l$ and therefore changes the normal operator.  The paper treats the equal-weight, non-redundant tangent data space exactly; we do not claim that this is the unique physical noise norm for an electrode-based experiment.
 
 
 \section{Linearization in an $L^2$ potential}
@@ -559,7 +559,7 @@ The severe exponential attenuation is already present in the radial block. In th
 \[||d||_{\mbox{red}} \leq ||d||_{\mbox{raw}} \leq \sqrt{2}\,||d||_{\mbox{red}},\]
 although they are not scalar multiples. The corresponding radial normal operators differ, after an overall factor, by the rank-one correction associated with the zero moment. Hence the exponential degree of ill-posedness is not produced by the unbounded multiplicities of the non-radial data.
 
-The norm is also not claimed to be induced by the Banach operator norm on $\mathcal L(H^{1/2},H^{-1/2})$.  An SVD requires a Hilbert data metric, and the choice here is attached to the derivative at the rotationally invariant background $q=0$.  We do not assert that the nonlinear map takes values in this sequence space.  For physical electrode data the statistically appropriate metric depends on the noise covariance: independent repeated measurements retain a multiplicity gain, while exact or perfectly correlated algebraic copies should be counted only once.
+Note that the norm is also not the induced by the Banach operator norm on $\mathcal L(H^{1/2},H^{-1/2})$.  An SVD requires a Hilbert data metric, and the choice here is attached to the derivative at the rotationally invariant background $q=0$.  We do not assert that the nonlinear map takes values in this sequence space.  For physical electrode data the statistically appropriate metric depends on the noise covariance: independent repeated measurements retain a multiplicity gain, while exact or perfectly correlated algebraic copies should be counted only once.
 
 
 Define the non-redundant moment map initially on a dense subspace by
@@ -583,7 +583,7 @@ The normalization in \eqref{eq:M} is chosen to make the later kernel and norm fo
 
 \section{The normal operator}
 \label{sec:normal}
-In this section we show that the non redundant data norm has produced a simple form for the kernel of the normal operator.
+In this section we show that the non-redundant data norm has produced a simple form for the kernel of the normal operator.
 \begin{proposition}[Explicit form of normal-operator]
 \label{prop:normal-factorization}
 The map $\mathcal{M} $ extends to a bounded operator
@@ -866,7 +866,7 @@ Equip $\D$ with the Poincar\'e metric of curvature $-1$,
  \dd\mu_H=\frac{4\,\dd A}{(1-|z|^2)^2},
  \label{eq:poincare-metric}
 \end{equation}
-and Laplace--Beltrami operator
+and Laplace--Beltrami operator \cite{bergeron2016spectrum}
 \begin{equation}
  \Delta_H=\frac{(1-|z|^2)^2}{4}\Delta_E.
  \label{eq:hyperbolic-laplacian}
@@ -1178,7 +1178,19 @@ The endpoint kernel
 \]
 is not in $L^1(\mathbb H^2)$: $2\pi h(d)\sinh d\to1$ as $d\to\infty$.  It is in $L^2$.  Thus boundedness should not be justified by an $L^1$ Young inequality.  Proposition~\ref{prop:norm} establishes boundedness independently, and the spherical transform below identifies the bounded multiplier.
 
+The nonendpoint Berezin operators correspond, after conjugation to Euclidean area, to normal operators of weighted moment maps with coefficients \((s)_p(s)_q/(p!q!)\) and object weight \((1-|z|^2)^{s-1}\). Thus \(s=1\) is precisely the member selected by the equal-weight Calderón moments. All members have the same generalized eigenfunctions, and their multipliers differ only by gamma factors; in particular their high-frequency decay has the common exponential factor \(e^{-\pi\mu}\).
 
+The use of a specially chosen Hilbert topology to expose a tractable
+normal operator has precedents in the X-ray transform on the disk..  Mishra,
+Monard and Zou study a one-parameter family of self-adjoint X-ray
+normal operators obtained from singularly weighted $L^2$ structures.
+These realizations admit generalized-Zernike singular systems and can
+be expressed as functions of distinguished differential operators
+\cite{MishraMonardZou2023}. 
+% The analogy here is methodological: we do
+%not identify their weight parameter with the Berezin parameter $s$,
+%nor their X-ray normal operators with the Calder\'on operator studied
+%in this paper.
 
 
 \section{Hyperbolic spectral multiplier and operator spectrum}
@@ -1594,7 +1606,8 @@ The abstract diagonalization belongs to established Berezin and symmetric-space 
 This route makes the data norm and the exceptional edge $n=|m|$ visible rather than concealing them in a formal block sum.
 
 
-The exact diagonalization is therefore a statement about a specified local experiment: the derivative at the zero potential, with one equal-weight coordinate for each independent Fourier moment.  This choice is not presented as the unique physical norm for EIT.  It is, however, mathematically nontrivial and falsifiable: it removes rather than enhances the raw multiplicity gain, it exposes a global invariant geometry that is hidden by the unreduced matrix norm, and it leaves the exponential attenuation already present in the uniformly equivalent radial subproblem.  These points allow other data norms---including covariance-weighted electrode norms---to be compared objectively with the present baseline.
+The exact diagonalization is therefore a statement about a specified local experiment: the derivative at the zero potential, with one equal-weight coordinate for each independent Fourier moment.  
+While this is not the a norm derived from a specific physical noise model. However it exposes a global invariant geometry that is hidden by the unreduced matrix norm, and it leaves the exponential attenuation already present in the uniformly equivalent radial subproblem.  These points allow other data norms---including covariance-weighted electrode norms---to be compared objectively with the present baseline.
 
 
 Several related questions remain outside the scope of the present paper.  Frequency-weighted Dirichlet-to-Neumann or Neumann-to-Dirichlet  data lead to logarithmic, dilogarithmic or shifted-polylogarithmic kernels; for the dilogarithm kernel a third-order adjoint intertwiner is available, but no explicit singular system is presently known.  If the perturbation is known near the boundary, the radial operator becomes compact and a commuting Heun equation appears.  These are separate spectral problems and are not needed for the present full-data result. The three-dimensional analogue of the present problem may  fall to the same methods as used in this paper, albeit with a more elaborate redundancy weighting. 
@@ -1608,7 +1621,7 @@ The author would like to thank Andy Adler, David Isaacson, Fancois Monard, Mikko
  The author would like to thank the Isaac Newton Institute for Mathematical Sciences, Cambridge, for support and hospitality during the programme Rich and Non-linear Tomography where some of the work on this paper was undertaken. This work was supported by EPSRC grant no EP/Z000580/1.  Part of this work was completed while the author was a Visiting Fellow at Clare Hall, Cambridge.}
 
 \roles{William R B Lionheart: conceptualization, methodology, formal analysis, investigation, software, validation, visualization, writing--original draft, and writing--review and editing.}
-\data{The MATLAB code used for the exploratory finite-section figures can be found at the repositary \url{https://github.com/billlion/CalderonDiskSVD} }
+\data{The MATLAB code used for the exploratory finite-section figures can be found at the repository \url{https://github.com/billlion/CalderonDiskSVD} }
 
 \bibliographystyle{iopart-num-titles}
 \bibliography{references}
@@ -1710,7 +1723,7 @@ For real \(t\in(0,1)\) and real \(\mu\),
 =
 \overline{F_\mu(t)}.
 \]
-(Note, we could probably see this from the power series for the hypergeometric function?) 
+%(Note, we could probably see this from the power series for the hypergeometric function?) 
 Consequently,
 \[
 F_\mu(t)
@@ -1801,7 +1814,7 @@ C(\mu)e^{i\mu\xi}
 Thus the complex factors in the hypergeometric representation should not be interpreted as selecting a single travelling wave. The Friedrichs generalized eigenfunction is real, and its asymptotic behaviour consists of the corresponding conjugate pair of incoming and outgoing waves.
 
 
-{\bf Edit} there is another way to do this
+%{\bf Edit} there is another way to do this
 
 An alternative way to see that \(\Phi_\mu\) is real is obtained from Pfaff's transformation
 \[
