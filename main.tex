@@ -96,7 +96,7 @@ Calder\'on introduced the inverse boundary problem that now bears his name in th
 
 
  
-The singular value decomposition (SVD) of discretized EIT Jacobians has been used to study ill-posedness and non-uniform resolution since the mid-1980s.  Murai and Kagawa \cite{murai1985electrical} computed a numerical SVD for a resistor-mesh/finite-element model.  Breckon and Pidcock \cite{breckon1988some} used singular values from a finite-element model to assess the relative importance of drive-pair separation, and Connolly and Wall \cite{connolly1988inverse} published numerical singular values for a rotationally symmetric problem.  Numerical singular functions for the disk were presented by the author at the Third European Workshop on EIT in Copenhagen in 1990 and in the author's doctoral thesis, submitted under the name W. R. Breckon \cite{breckon1990image}, see also \cite{adler2021,Lionheart2026AtLast}.
+The singular value decomposition (SVD) of discretized EIT Jacobians has been used to study ill-posedness and non-uniform resolution since the mid-1980s.  Murai and Kagawa \cite{murai1985electrical} computed a numerical SVD for a resistor-mesh/finite-element model.  Breckon and Pidcock \cite{breckon1988some} used singular values from a finite-element model to assess the relative importance of drive-pair separation, and Connolly and Wall \cite{connolly1988inverse} published numerical singular values for a rotationally symmetric problem.  Numerical singular functions for the disk were presented by the author at the Third European Workshop on EIT in Copenhagen in 1990 and in the author's doctoral thesis, under his previous name  W. R. Breckon \cite{breckon1990image}, see also \cite{adler2021,Lionheart2026AtLast}.
 
 These computations already showed severe ill-posedness, strongly non-uniform resolution, and weak sensitivity to interior perturbations.  Nevertheless, an explicit analytic singular system for the full angular problem has remained unavailable for roughly four decades.  The contrast with the classical Zernike SVD of the Radon transform on the disk made this absence particularly conspicuous.  A key change of viewpoint came from recognizing that the continuum normal operator is not compact (Proposition~\ref{prop:noncompact}); the appropriate analogue of an SVD is therefore a continuous spectral diagonalization rather than a discrete singular sequence.
 
@@ -145,7 +145,7 @@ which is exactly the Zernike index lattice. Compare for example the diagonalizat
  \label{eq:intro-kernel}
 \end{equation}
 %This kernel is not the Bergman projection kernel.   
-After a unitary change of measure it is instead the the squared modulus of the inner product between normalized Hardy reproducing kernels  and is a limiting Berezin convolution ( see Sec 7.1).  Berezin transforms and their expression as functions of invariant differential operators have a substantial literature \cite{Berezin1975,UnterbergerUpmeier1994,Englis1995,Stroethoff1997}.  Our contribution is the bridge from linearized Calder\'on measurements to the Hardy-endpoint kernel, together with its inverse-problem interpretation.
+After a unitary change of measure it is instead the the squared modulus of the inner product between normalized Hardy reproducing kernels  and is a limiting Berezin convolution ( see Sec \ref{sec:berezin}).  Berezin transforms and their expression as functions of invariant differential operators have a substantial literature \cite{Berezin1975,UnterbergerUpmeier1994,Englis1995,Stroethoff1997}.  Our contribution is the bridge from linearized Calder\'on measurements to the Hardy-endpoint kernel, together with its inverse-problem interpretation.
 The multiplicity normalization is the step that reveals this invariant operator.  It is not hidden as an allegedly equivalent form of the usual operator norm: it defines the particular tangent-data Hilbert space being diagonalized.  Section~\ref{sec:nonredundant} compares it explicitly with the raw entrywise matrix norm and with physically noise-weighted data.  In particular, counting each independent datum once cannot increase data energy or the ordered singular values relative to counting every repeated copy in raw $\ell^2$; it removes that repetition gain.
 
 Unlike the earlier X-ray factorization, the hyperbolic structure found
@@ -1065,7 +1065,7 @@ is the squared overlap of normalized Hardy kernels
 
 %%try this
 
-\subsection{Relation with Hardy and weighted Bergman Berezin transforms}
+\subsection{Relation with Hardy and weighted Bergman Berezin transforms}\label{sec:berezin}
 
 We briefly explain the Berezin terminology used below.  No result from
 `Berezin quantization' is required for the diagonalization: the spectral
@@ -1646,6 +1646,236 @@ FullSimplify[Pz[ker]-Pw[ker],
  Assumptions -> 0<r<1 && 0<rho<1 && Element[psi,Reals]]
 \end{lstlisting}
 which evaluates to zero. 
+
+
+
+\section{Reality of generalized eigenfunctions}
+
+
+For the integral operator
+\[
+(Kf)(t)=\int_0^1\frac{f(s)}{1-ts}\,ds,
+\]
+the generalized eigenfunctions may be written in the form
+\[
+\Phi_\mu(t)
+=
+(1-t)^{-1/2+i\mu}
+{}_2F_1\left(
+\frac12+i\mu,\frac12+i\mu;
+1;t
+\right),
+\qquad
+0<t<1,
+\]
+where \(\mu\in\mathbb{R}\). Although both the complex power and the hypergeometric function appearing in this expression are in general complex, their phases cancel and \(\Phi_\mu\) is real-valued.
+
+To see this, put
+\[
+F_\mu(t)
+=
+{}_2F_1\left(
+\frac12+i\mu,\frac12+i\mu;
+1;t
+\right).
+\]
+Euler's transformation
+\[
+{}_2F_1(a,b;c;t)
+=
+(1-t)^{c-a-b}
+{}_2F_1(c-a,c-b;c;t)
+\]
+gives, with
+\[
+a=b=\frac12+i\mu,
+\qquad c=1,
+\]
+the identity
+\[
+F_\mu(t)
+=
+(1-t)^{-2i\mu}
+{}_2F_1\left(
+\frac12-i\mu,\frac12-i\mu;
+1;t
+\right).
+\]
+For real \(t\in(0,1)\) and real \(\mu\),
+\[
+{}_2F_1\left(
+\frac12-i\mu,\frac12-i\mu;
+1;t
+\right)
+=
+\overline{F_\mu(t)}.
+\]
+(Note, we could probably see this from the power series for the hypergeometric function?) 
+Consequently,
+\[
+F_\mu(t)
+=
+(1-t)^{-2i\mu}\overline{F_\mu(t)}.
+\]
+Multiplication by (\(1-t)^{i\mu}\) gives
+\[
+(1-t)^{i\mu}F_\mu(t)
+=
+(1-t)^{-i\mu}\overline{F_\mu(t)}
+\overline{(1-t)^{i\mu}F_\mu(t)}.
+\]
+It follows that
+\[
+(1-t)^{i\mu}
+{}_2F_1\left(
+\frac12+i\mu,\frac12+i\mu;
+1;t
+\right)
+\]
+is real-valued. Hence
+\[
+\Phi_\mu(t)\in\mathbb{R},
+\qquad 0<t<1,\quad \mu\in\mathbb{R}.
+\]
+
+Thus the apparently complex representation
+\[
+\Phi_\mu(t)
+=(1-t)^{-1/2}
+\left[
+(1-t)^{i\mu}
+{}_2F_1\left(
+\frac12+i\mu,\frac12+i\mu;
+1;t
+\right)
+\right]
+\]
+is in fact a representation of a real generalized eigenfunction.
+
+This also clarifies the relation with the Friedrichs realization of the commuting differential operator. At \(t=0\), the corresponding differential equation has a non-logarithmic Frobenius solution and a second, logarithmic solution. Since
+\[
+{}_2F_1(a,b;1;0)=1,
+\]
+we have
+\[
+\Phi\mu(0)=1,
+\]
+and \(\Phi_\mu\) is the non-logarithmic solution normalized at (t=0). It therefore gives the generalized eigenfunction selected by the Friedrichs boundary condition, up to an overall real normalization.
+
+Under the Liouville transformation
+\[
+t=\tanh^2\frac{\xi}{2},
+\]
+the corresponding Schrödinger generalized eigenfunction is
+\[
+u_\mu(\xi)
+=
+\bigl[t(1-t)^2\bigr]^{1/4}\Phi_\mu(t).
+\]
+Equivalently, writing
+\[
+r=\tanh\frac{\xi}{2},
+\qquad t=r^2,
+\]
+we obtain
+\[
+u_\mu(\xi)
+=	
+\sqrt{r(1-r^2)},
+\Phi_\mu(r^2).
+\]
+This function is again real. As \(\xi\to\infty\), it has the real standing-wave form
+\[
+u_\mu(\xi)
+\sim
+A(\mu)\cos\bigl(\mu\xi+\delta(\mu)\bigr),
+\]
+or, equivalently,
+\[
+u_\mu(\xi)
+\sim
+C(\mu)e^{i\mu\xi}
++
+\overline{C(\mu)}e^{-i\mu\xi}.
+\]
+Thus the complex factors in the hypergeometric representation should not be interpreted as selecting a single travelling wave. The Friedrichs generalized eigenfunction is real, and its asymptotic behaviour consists of the corresponding conjugate pair of incoming and outgoing waves.
+
+
+{\bf Edit} there is another way to do this
+
+An alternative way to see that \(\Phi_\mu\) is real is obtained from Pfaff's transformation
+\[
+{}_2F_1(a,b;c;t)
+=
+(1-t)^{-a}
+{}_2F_1\left(
+a,c-b;c;\frac{t}{t-1}
+\right).
+\]
+Taking
+\[
+a=b=\frac12+i\mu,\qquad c=1,
+\]
+gives
+\[
+{}_2F_1\left(
+\frac12+i\mu,\frac12+i\mu;1;t
+\right)
+=
+(1-t)^{-1/2-i\mu}
+{}_2F_1\left(
+\frac12+i\mu,\frac12-i\mu;
+1;\frac{t}{t-1}
+\right).
+\]
+Consequently,
+\[
+\Phi_\mu(t)
+=
+\frac{1}{1-t}
+{}_2F_1\left(
+\frac12+i\mu,\frac12-i\mu;
+1;\frac{t}{t-1}
+\right).
+\]
+The two upper parameters are now complex conjugates, and the argument is real and negative for (0<t<1). In particular, this representation makes the fact that  \(\Phi_\mu\) is real considerably more transparent.
+
+Using
+\[
+P_\nu(x)
+=
+{}_2F_1\left(
+-\nu,\nu+1;1;\frac{1-x}{2}
+\right),
+\]
+where \(P_\nu\) is the Legendre function of the first kind, we may equivalently write
+\[
+\Phi_\mu(t)
+=	
+\frac{1}{1-t}
+P_{-1/2+i\mu}\left(\frac{1+t}{1-t}\right).
+\]
+Here \(P_{-1/2+i\mu}(x)\), for \(x>1\),  is real-valued for real \(\mu\).  (see DLMF 14.20 Conical (or Mehler) Functions \url{https://dlmf.nist.gov/14.20})
+
+Finally, under the Liouville change of variable
+\[
+t=\tanh^2\frac{\xi}{2},
+\]
+we have
+\[
+\frac{1+t}{1-t}=\cosh\xi,
+\qquad
+\frac{1}{1-t}=\cosh^2\frac{\xi}{2},
+\]
+and hence
+\[
+\Phi_\mu\left(\tanh^2\frac{\xi}{2}\right)
+=	
+\cosh^2\frac{\xi}{2},
+P_{-1/2+i\mu}(\cosh\xi).
+\]
+Thus the cancellation of the complex phases in the original hypergeometric representation can also be understood through its representation as a real conical function.
+
 
 %\section{Conventions and alternative normalizations}
 %\label{app:conventions}
