@@ -127,7 +127,7 @@ The radial subproblem---that is, the $m=0$ angular Fourier block corresponding t
 \end{equation}
 Its continuous spectral multiplier may be obtained from an adjacent-interval finite Hilbert transform, from a commuting Sturm--Liouville expression, from Hilbert-matrix theory, or from a P\"oschl--Teller scattering problem; see, for example, \cite{KatsevichTovbis2016,AlemanMontesSarafoleanu2012,MontesVirtanen2025}.  The finite-Hilbert-transform route is especially informative about non-compactness: the intervals share an endpoint.  Introducing a gap---which in the present problem corresponds to knowing the perturbation in a neighbourhood of the boundary---makes the radial operator compact.  Compactness is also restored for the frequency-weighted Neumann-to-Dirichlet formulation, but an explicit singular system is not presently known in either variant.
 
-The purpose of this paper is to solve the full angular problem for a symmetry-adapted, equal-weight non-redundant Hilbert realization of the derivative at the zero potential.  The result is not merely a collection of separated radial formulas: all angular blocks assemble into one hyperbolically invariant operator on the disk.  To our knowledge, this gives the first explicit diagonalization of the full angularly dependent, multiplicity-normalized linearized Calder\'on measurement map in this setting and resolves an analytic question that has been investigated numerically since the earliest EIT SVD studies.
+The purpose of this paper is to solve the full angular problem for a symmetry-adapted, equal-weight non-redundant Hilbert realization of the derivative at the zero potential.  Rather than a  collection of separated radial formulas,  all angular blocks assemble into one hyperbolically invariant operator on the disk.  To our knowledge, this gives the first explicit diagonalization of the full angularly dependent, multiplicity-normalized linearized Calder\'on measurement map in this setting and resolves an analytic question that has been investigated numerically since the earliest EIT SVD studies.
 
 
 The key bookkeeping observation is that a matrix element indexed by boundary Fourier frequencies $(k,l)$ depends on the two integers
@@ -146,7 +146,9 @@ which is exactly the Zernike index lattice. Compare for example the diagonalizat
 \end{equation}
 %This kernel is not the Bergman projection kernel.   
 After a unitary change of measure it is instead the squared modulus of the inner product between normalized Hardy reproducing kernels  and is a limiting Berezin convolution ( see Sec \ref{sec:berezin}).  Berezin transforms and their expression as functions of invariant differential operators have a substantial literature \cite{Berezin1975,UnterbergerUpmeier1994,Englis1995,Stroethoff1997}.  Our contribution is the bridge from linearized Calder\'on measurements to the Hardy-endpoint kernel, together with its inverse-problem interpretation.
-The multiplicity normalization is the step that reveals this invariant operator.  It is not hidden as an allegedly equivalent form of the usual operator norm: it defines the particular tangent-data Hilbert space being diagonalized.  Section~\ref{sec:nonredundant} compares it explicitly with the raw entrywise matrix norm and with physically noise-weighted data.  In particular, counting each independent datum once cannot increase data energy or the ordered singular values relative to counting every repeated copy in raw $\ell^2$; it removes that repetition gain.
+The multiplicity normalization is the step that reveals this invariant operator.  
+%It is not hidden as an allegedly equivalent form of the usual operator norm: it defines the particular tangent-data Hilbert space being diagonalized.  
+Section~\ref{sec:nonredundant} compares it explicitly with the raw entrywise matrix norm and with physically noise-weighted data.  In particular, counting each independent datum once cannot increase data energy or the ordered singular values relative to counting every repeated copy in raw $\ell^2$; it removes that repetition gain.
 
 Unlike the earlier X-ray factorization, the hyperbolic structure found
 here arises directly in the normal operator of the symmetry-reduced
@@ -344,7 +346,8 @@ Subtraction of \eqref{eq:linearized-DtN}, followed by \eqref{eq:multiplication-e
 	map is precomposed with $\frac12\Delta$.
 \end{remark}
 \begin{remark}
-The operator-series argument gives every Fr\'echet derivative, but only the first derivative is needed below.  We use \eqref{eq:alessandrini} in the standard descriptive sense; it is, at heart, the Green identity for two solutions \cite{Alessandrini1988}.
+The operator-series argument gives every Fr\'echet derivative, but only the first derivative is needed below.  
+%We use \eqref{eq:alessandrini} in the standard descriptive sense; it is, at heart, the Green identity for two solutions \cite{Alessandrini1988}.
 \end{remark}
 
 We now remain in the Schr\"odinger formulation and compute the
@@ -827,7 +830,7 @@ Since
 \delta=\pi\omega(z)\omega(w)\kappa,
 \end{equation}
 we have
-\begin{equation}
+\begin{equation}\label{eq:L-kernel}
 \begin{aligned}
 	\mathcal L_z\kappa
 	&=
@@ -1181,7 +1184,7 @@ is not in $L^1(\mathbb H^2)$: $2\pi h(d)\sinh d\to1$ as $d\to\infty$.  It is in 
 The nonendpoint Berezin operators correspond, after conjugation to Euclidean area, to normal operators of weighted moment maps with coefficients \((s)_p(s)_q/(p!q!)\) and object weight \((1-|z|^2)^{s-1}\). Thus \(s=1\) is precisely the member selected by the equal-weight Calderón moments. All members have the same generalized eigenfunctions, and their multipliers differ only by gamma factors; in particular their high-frequency decay has the common exponential factor \(e^{-\pi\mu}\).
 
 The use of a specially chosen Hilbert topology to expose a tractable
-normal operator has precedents in the X-ray transform on the disk..  Mishra,
+normal operator has precedents in the X-ray transform on the disk.  Mishra,
 Monard and Zou study a one-parameter family of self-adjoint X-ray
 normal operators obtained from singularly weighted $L^2$ structures.
 These realizations admit generalized-Zernike singular systems and can
@@ -1523,7 +1526,7 @@ eigenfunctions.
 The truncation makes every block compact; its discrete modes should be interpreted as spectral packets sampling the continuous parameter $\mu$, not as convergent eigenvalues of the infinite operator.
 
 
-Figure~\ref{fig:global-order} shows the characteristic interlacing of angular frequency and radial oscillation count.  The sawtooth behaviour is expected: after ordering by attenuation, the next mode need not have either the next angular frequency or the next radial zero count.  Figure~\ref{fig:analytic-comparison} compares selected numerical profiles with \eqref{eq:radial-genfun} after the stable transformation \eqref{eq:liouville-profile}.
+Figure~\ref{fig:global-order} shows the characteristic interlacing of angular frequency and radial oscillation count.  The sawtooth behaviour is expected: after ordering by attenuation, the next mode need not have either the next angular frequency or the next radial zero count, as observed in \cite{adler2021}.  Figure~\ref{fig:analytic-comparison} compares selected numerical profiles with \eqref{eq:radial-genfun} after the stable transformation \eqref{eq:liouville-profile}.
 
 \begin{figure}[htbp]
  \centering
@@ -1591,7 +1594,8 @@ resolution near the Euclidean boundary.
 The result supplies a global counterpart of the rotationally symmetric calculation.  The one-dimensional Hilbert-kernel operator is the $m=0$ angular block of a Hardy-endpoint Berezin convolution on the Poincar\'e disk.  The separate Sturm--Liouville expressions are the angular reductions of one disk differential operator.  This explains why the same multiplier appears through finite Hilbert transforms, Hilbert matrices, scattering theory and hyperbolic harmonic analysis.
 
 
-The relation with disk Radon transforms is structural rather than literal.  In Radon and geodesic X-ray problems, Zernike or generalized Zernike functions diagonalize distinguished disk operators, and differential intertwining identities yield sharp mapping results \cite{Monard2020,MishraMonard2021,MishraMonardZou2023,EptaminitakisMonardZou2026}.  Here the same Zernike lattice arises from the multiplicities of boundary Fourier measurements, but the normal operator is not an X-ray normal operator and does not localize the unknown along hyperbolic geodesics.  The geometry is hyperbolic while the imaging mechanism is an exponentially smoothing invariant convolution.
+The relation with disk Radon transforms is structural rather than literal.  In Radon and geodesic X-ray problems, Zernike or generalized Zernike functions diagonalize distinguished disk operators, and differential intertwining identities yield sharp mapping results \cite{Monard2020,MishraMonard2021,MishraMonardZou2023,EptaminitakisMonardZou2026}.  Here the same Zernike lattice arises from the multiplicities of boundary Fourier measurements, but the normal operator is not an X-ray normal operator and is not localized the unknown along hyperbolic geodesics, even though Berenstein and 
+Casadio Tarabusi \cite{BerensteinCasadio1994} were able to connect this transform with early Barber-Brown backprojection.   The geometry is hyperbolic while the imaging mechanism is an exponentially smoothing invariant convolution.
 
 The abstract diagonalization belongs to established Berezin and symmetric-space harmonic analysis.  The new inverse-problem statement is the route
 \begin{equation*}
@@ -1603,14 +1607,18 @@ The abstract diagonalization belongs to established Berezin and symmetric-space 
  \longrightarrow \hbox{Hardy-endpoint Berezin convolution}.
 \end{gathered}
 \end{equation*}
-This route makes the data norm and the exceptional edge $n=|m|$ visible rather than concealing them in a formal block sum.
+This route makes the data norm and the exceptional edge $n=|m|$ visible.% rather than concealing them in a formal block sum.
 
 
 The exact diagonalization is therefore a statement about a specified local experiment: the derivative at the zero potential, with one equal-weight coordinate for each independent Fourier moment.  
 While this is not the a norm derived from a specific physical noise model. However it exposes a global invariant geometry that is hidden by the unreduced matrix norm, and it leaves the exponential attenuation already present in the uniformly equivalent radial subproblem.  These points allow other data norms---including covariance-weighted electrode norms---to be compared objectively with the present baseline.
 
+Implicit in our decomposition is a possible route to a regularized inversion formula, however it is not clear that this would have a practical value over matrix based regularized inversion methods. The D-bar method gives an explicit non-linear inversion method for the Calder\'on problem in two dimensions. In that case the  synthesis of complex geometric optics (CGO) data from boundary current and voltage data is severely illposed and requires regularization in practice.  See \cite{hamilton2019comparing} for a comparison between D-bar and standard regularized inversion. A diagonalization of the normal operator of the voltage and current to CGO data would provide an interesting comparison with the present work. 
 
-Several related questions remain outside the scope of the present paper.  Frequency-weighted Dirichlet-to-Neumann or Neumann-to-Dirichlet  data lead to logarithmic, dilogarithmic or shifted-polylogarithmic kernels; for the dilogarithm kernel a third-order adjoint intertwiner is available, but no explicit singular system is presently known.  If the perturbation is known near the boundary, the radial operator becomes compact and a commuting Heun equation appears.  These are separate spectral problems and are not needed for the present full-data result. The three-dimensional analogue of the present problem may  fall to the same methods as used in this paper, albeit with a more elaborate redundancy weighting. 
+The extension to the ball in dimension three, the Neumann-to-Dirichlet case and  further understanding of the effect of unknown conductivity near the boundary remain outstanding and interesting questions for future work.  This paper however makes an important contribution in confirming the spectral decay and depth dependent resolution long observed numerically.  It also raises interesting issues more generally for diagonalization of self adjoint integral operator: specifically systematic methods to discover commuting differential operators.
+
+
+%Several related questions remain outside the scope of the present paper.  Frequency-weighted Dirichlet-to-Neumann or Neumann-to-Dirichlet  data lead to logarithmic, dilogarithmic or shifted-polylogarithmic kernels; for the dilogarithm kernel a third-order adjoint intertwiner is available, but no explicit singular system is presently known.  If the perturbation is known near the boundary, the radial operator becomes compact and a commuting Heun equation appears.  These are separate spectral problems and are not needed for the present full-data result. The three-dimensional analogue of the present problem may  fall to the same methods as used in this paper, albeit with a more elaborate redundancy weighting. 
 
 
 
